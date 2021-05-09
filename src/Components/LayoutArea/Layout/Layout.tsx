@@ -1,5 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import Header from "../Header/Header";
+import Main from "../Main/Main";
 import "./Layout.css";
 
 function Layout(): JSX.Element {
@@ -16,7 +17,7 @@ function Layout(): JSX.Element {
                 </aside>
 
                 <main>
-                    Main
+                    <Main />
                 </main>
 
                 <footer>
