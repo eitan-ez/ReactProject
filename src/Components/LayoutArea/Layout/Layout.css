@@ -13,7 +13,3 @@
     .Layout > main {
         grid-column: span 5;
     }
-    
-    .Layout, .Layout > * {
-        border: 1px solid black;
-    }

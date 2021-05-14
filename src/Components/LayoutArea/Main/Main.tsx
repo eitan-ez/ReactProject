@@ -1,4 +1,4 @@
-import SignForm from "../../LayoutAre/SignForm/SignForm";
+import SignForm from "../SignForm/SignForm";
 import "./Main.css";
 
 function Main(): JSX.Element {
