@@ -1,14 +1,11 @@
 .SignForm {
         margin: 20px;
         padding: 20px;
+        width: 450px;
     }
     
     .SignForm > .Headline { 
         text-align: center;
     }
     
-.SignForm > .TextBox {
-     width: 450px;
-     margin: 15px !important;
-    }
 

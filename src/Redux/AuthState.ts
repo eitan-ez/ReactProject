@@ -1,4 +1,4 @@
-import UserModel from "../Models/UserModel";
+import { UserModel } from "../Models/UserModel";
 
 export class AuthState {
     public user: UserModel = null;
