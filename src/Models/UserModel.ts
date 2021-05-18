@@ -1,7 +1,7 @@
 export enum UserType {
-    ADMIN,
-    COMPANY,
-    CUSTOMER
+    ADMIN = "ADMIN",
+    COMPANY = "COMPANY",
+    CUSTOMER = "CUSTOMER"
 }
 
 export class UserModel{

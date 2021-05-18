@@ -7,7 +7,7 @@ const jwtAxios = axios.create();
 jwtAxios.interceptors.request.use(request => {
 
     request.headers = {
-        "authorization": "Bearer " + store.getState().AuthState.user?.token
+        "jwt": store.getState().authState.user?.token
     };
 
     return request;
