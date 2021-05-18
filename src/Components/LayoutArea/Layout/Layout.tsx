@@ -1,32 +1,28 @@
 import { BrowserRouter } from "react-router-dom";
 import Header from "../Header/Header";
-import Main from "../Main/Main";
+import Main from "../Home/Main";
+import Routing from "../Routing/Routing";
 import "./Layout.css";
 
 function Layout(): JSX.Element {
-    return (
-        <BrowserRouter> {}
-            <div className="Layout">
+  return (
+    <BrowserRouter> {}
+      <div className="Layout">
 
-                <header>
-                    <Header />
-                </header>
+        <header>
+          <Header />
+        </header>
 
-                <aside>
-                    Menu
-                </aside>
+        <aside>Menu</aside>
 
-                <main>
-                    <Main />
-                </main>
+        <main>
+          <Routing />
+        </main>
 
-                <footer>
-                    Footer
-                </footer>
-
-            </div>
-        </BrowserRouter>
-    );
+        <footer>Footer</footer>
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default Layout;

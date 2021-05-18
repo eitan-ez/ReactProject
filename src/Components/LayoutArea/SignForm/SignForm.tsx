@@ -19,7 +19,7 @@ import notify from "../../../Services/Notification";
 import "./SignForm.css";
 
 function SignForm(): JSX.Element {
-  const history = useHistory(); // Redirect function
+  const history = useHistory();
   const { register, handleSubmit } = useForm<CredentialsModel>();
 
   async function send(credentials: CredentialsModel) {
@@ -30,9 +30,10 @@ function SignForm(): JSX.Element {
       );
       store.dispatch(loginAction(response.data));
       notify.success("You have been successfully logged in!");
-      history.push("/adminArea"); // Redirect to home on success
+      history.push("/admin"); // Redirect to /admin on success
     } catch (err) {
-      notify.error(err);
+      // notify.error(err);
+      alert(err);
     }
   }
 
@@ -68,9 +69,6 @@ function SignForm(): JSX.Element {
 
       <InputLabel>Customer Type</InputLabel>
       <Select {...register("userType")} variant="outlined" fullWidth>
-        <MenuItem value="">
-          <em>choose one...</em>
-        </MenuItem>
         <MenuItem value={"ADMIN"}>Admin</MenuItem>
         <MenuItem value={"COMPANY"}>Company</MenuItem>
         <MenuItem value={"CUSTOMER"}>Customer</MenuItem>

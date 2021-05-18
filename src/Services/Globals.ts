@@ -5,14 +5,16 @@ class Globals {
 // Global settings which are suitable only for development:
 class DevelopmentGlobals extends Globals {
     public urls = {
-        adminLogin: "http://localhost:8080/api/admin"
+        adminLogin: "http://localhost:8080/api/admin/login",
+        adminAddCompany: "http://localhost:8080/api/admin/add-company"
     };
 }
 
 // Global settings which are suitable only for production:
 class ProductionGlobals extends Globals {
     public urls = {
-        adminLogin: "http://localhost:8080/api/admin/login"
+        adminLogin: "http://localhost:8080/api/admin/login", 
+        adminAddCompany: "http://localhost:8080/api/admin/add-company"
     };
 }
 

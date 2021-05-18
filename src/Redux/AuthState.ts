@@ -21,13 +21,13 @@ export interface AuthAction {
     payload?: any;
 }
 
-export function reagisterAction(user: UserModel): AuthAction {
+export function registerAction(user: UserModel): AuthAction {
     return { type: AuthActionType.Register, payload: user} ;
 }
 export function loginAction(user: UserModel): AuthAction {
     return { type: AuthActionType.Login, payload: user} ;
 }
-export function logoutAction(user: UserModel): AuthAction {
+export function logoutAction(): AuthAction {
     return { type: AuthActionType.Logout} ;
 }
 
