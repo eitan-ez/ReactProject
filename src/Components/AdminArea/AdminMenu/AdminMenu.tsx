@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { UserType } from "../../../Models/UserModel";
 import store from "../../../Redux/Store";
 import AddCompany from "../AddCompany/AddCompany";
+import DeleteCompany from "../DeleteCompany/DeleteCompany";
 import UpdateCompany from "../UpdateCompany/UpdateCompany";
 import "./AdminMenu.css";
 
@@ -25,8 +26,10 @@ function AdminMenu(): JSX.Element {
         <br />
         <UpdateCompany />
         <br />
-        deleteCompany getAllCompanies getOneCompany addCustomer updateCustomer
-        deleteCustomer getAllCustomers getOneCustomer
+        <DeleteCompany />
+        <br />
+        getAllCompanies getOneCompany addCustomer updateCustomer deleteCustomer
+        getAllCustomers getOneCustomer
       </div>
     </div>
   );
