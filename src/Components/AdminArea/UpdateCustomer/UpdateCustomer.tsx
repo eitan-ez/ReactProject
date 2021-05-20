@@ -1,28 +1,27 @@
 import { Button, ButtonGroup, TextField, Typography } from "@material-ui/core";
 import { useForm } from "react-hook-form";
-import CompanyModel from "../../../Models/CompanyModel";
+import CustomerModel from "../../../Models/CustomerModel";
 import store from "../../../Redux/Store";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
-import "./UpdateCompany.css";
+import "./UpdateCustomer.css";
 
-function UpdateCompany(): JSX.Element {
-  const { register, handleSubmit } = useForm<CompanyModel>();
+function UpdateCustomer(): JSX.Element {
+  const { register, handleSubmit } = useForm<CustomerModel>();
 
-  async function send(company: CompanyModel) {
+  async function send(customer: CustomerModel) {
     try {
-      console.log(company);
-      const response = await jwtAxios.put<CompanyModel>(
-        globals.urls.adminUpdate + "company",
-        company
+      console.log(customer);
+      const response = await jwtAxios.put<CustomerModel>(
+        globals.urls.adminUpdate + "customer",
+        customer
       );
-      const addedCompany = response.data;
+      const addedCustomer = response.data;
 
       notify.success(
-        "company with id: " + addedCompany.id + " has been updated."
+        "customer with id: " + addedCustomer.id + " has been updated."
       );
-      // history.push("/products");
     } catch (err) {
       console.log(store.getState().authState.user.token);
       console.log(err);
@@ -30,14 +29,14 @@ function UpdateCompany(): JSX.Element {
   }
 
   return (
-    <form className="UpdateCompany Box" onSubmit={handleSubmit(send)}>
+    <form className="UpdateCustomer Box" onSubmit={handleSubmit(send)}>
       <Typography variant="h2" className="Headline">
-          Update Existing Company
+        Update Existing Customer
       </Typography>
 
       <TextField
         {...register("id")}
-        label="Company ID"
+        label="Customer ID"
         variant="outlined"
         fullWidth
       />
@@ -45,8 +44,17 @@ function UpdateCompany(): JSX.Element {
       <br />
 
       <TextField
-        {...register("name")}
-        label="Name"
+        {...register("firstName")}
+        label="First Name"
+        variant="outlined"
+        fullWidth
+      />
+      <br />
+      <br />
+
+      <TextField
+        {...register("lastName")}
+        label="First Name"
         variant="outlined"
         fullWidth
       />
@@ -84,4 +92,4 @@ function UpdateCompany(): JSX.Element {
   );
 }
 
-export default UpdateCompany;
+export default UpdateCustomer;

@@ -1,36 +1,34 @@
 import { Button, ButtonGroup, TextField, Typography } from "@material-ui/core";
-import { AxiosResponse } from "axios";
 import { useForm } from "react-hook-form";
-import CompanyModel from "../../../Models/CompanyModel";
-import store from "../../../Redux/Store";
+import CustomerModel from "../../../Models/CustomerModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
-import "./DeleteCompany.css";
+import "./DeleteCustomer.css";
 
-function DeleteCompany(): JSX.Element {
-  const { register, handleSubmit } = useForm<CompanyModel>();
+function DeleteCustomer(): JSX.Element {
+  const { register, handleSubmit } = useForm<CustomerModel>();
 
-  async function send(company: CompanyModel) {
+  async function send(customer: CustomerModel) {
     try {
       const response = await jwtAxios.delete(
-        globals.urls.adminDelete + "company/" + company.id
+        globals.urls.adminDelete + "customer/" + customer.id
       );
-      notify.success("company with id: " + company.id + " has been deleted.");
+      notify.success("customer with id: " + customer.id + " has been deleted.");
     } catch (err) {
       console.log(err);
     }
   }
 
   return (
-    <form className="DeleteCompany Box" onSubmit={handleSubmit(send)}>
+    <form className="DeleteCustomer Box" onSubmit={handleSubmit(send)}>
       <Typography variant="h2" className="Headline">
-        Delete a Company
+        Delete a Customer
       </Typography>
 
       <TextField
         {...register("id")}
-        label="Company ID"
+        label="Customer ID"
         variant="outlined"
         fullWidth
       />
@@ -48,4 +46,4 @@ function DeleteCompany(): JSX.Element {
     </form>
   );
 }
-export default DeleteCompany;
+export default DeleteCustomer;

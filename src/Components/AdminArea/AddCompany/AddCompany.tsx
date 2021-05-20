@@ -14,7 +14,7 @@ function AddCompany(): JSX.Element {
     try {
 
         console.log(company);
-        const response = await jwtAxios.post<CompanyModel>(globals.urls.adminAddCompany, company);
+        const response = await jwtAxios.post<CompanyModel>(globals.urls.adminAdd + "company", company);
         const addedCompany = response.data;
 
         notify.success("company has been added id: " + addedCompany.id);

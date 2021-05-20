@@ -6,9 +6,9 @@ class Globals {
 class DevelopmentGlobals extends Globals {
     public urls = {
         adminLogin: "http://localhost:8080/api/admin/login",
-        adminAddCompany: "http://localhost:8080/api/admin/add-company",
-        adminUpdateCompany: "http://localhost:8080/api/admin/update-company",
-        adminDeleteCompany: "http://localhost:8080/api/admin/delete-company"
+        adminAdd: "http://localhost:8080/api/admin/add-",
+        adminUpdate: "http://localhost:8080/api/admin/update-",
+        adminDelete: "http://localhost:8080/api/admin/delete-"
     };
 }
 
@@ -16,9 +16,9 @@ class DevelopmentGlobals extends Globals {
 class ProductionGlobals extends Globals {
     public urls = {
         adminLogin: "http://localhost:8080/api/admin/login", 
-        adminAddCompany: "http://localhost:8080/api/admin/add-company",
-        adminUpdateCompany: "http://localhost:8080/api/admin/update-company",
-        adminDeleteCompany: "http://localhost:8080/api/admin/delete-company"
+        adminAdd: "http://localhost:8080/api/admin/add-",
+        adminUpdate: "http://localhost:8080/api/admin/update-",
+        adminDelete: "http://localhost:8080/api/admin/delete-"
     };
 }
 

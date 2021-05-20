@@ -4,8 +4,11 @@ import { NavLink } from "react-router-dom";
 import { UserType } from "../../../Models/UserModel";
 import store from "../../../Redux/Store";
 import AddCompany from "../AddCompany/AddCompany";
+import AddCustomer from "../AddCustomer/AddCustomer";
 import DeleteCompany from "../DeleteCompany/DeleteCompany";
+import DeleteCustomer from "../DeleteCustomer/DeleteCustomer";
 import UpdateCompany from "../UpdateCompany/UpdateCompany";
+import UpdateCustomer from "../UpdateCustomer/UpdateCustomer";
 import "./AdminMenu.css";
 
 function AdminMenu(): JSX.Element {
@@ -28,7 +31,14 @@ function AdminMenu(): JSX.Element {
         <br />
         <DeleteCompany />
         <br />
-        getAllCompanies getOneCompany addCustomer updateCustomer deleteCustomer
+        getAllCompanies getOneCompany
+        <br />
+        <AddCustomer />
+        <br />
+        <UpdateCustomer />
+        <br />
+        <DeleteCustomer />
+        <br />
         getAllCustomers getOneCustomer
       </div>
     </div>
