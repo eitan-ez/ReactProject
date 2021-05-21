@@ -7,9 +7,12 @@ import AddCompany from "../AddCompany/AddCompany";
 import AddCustomer from "../AddCustomer/AddCustomer";
 import DeleteCompany from "../DeleteCompany/DeleteCompany";
 import DeleteCustomer from "../DeleteCustomer/DeleteCustomer";
+import GetAllCustomers from "../GetAllCustomers/GetAllCustomers";
 import GetOneCompany from "../getOneComapny/getOneCompany";
+import GetOneCustomer from "../getOneCustomer/getOneCustomer";
 import UpdateCompany from "../UpdateCompany/UpdateCompany";
 import UpdateCustomer from "../UpdateCustomer/UpdateCustomer";
+import GetAllCompanies from "../GetAllCompanies/GetAllCompanies";
 import "./AdminMenu.css";
 
 function AdminMenu(): JSX.Element {
@@ -32,7 +35,7 @@ function AdminMenu(): JSX.Element {
         <br />
         <DeleteCompany />
         <br />
-        getAllCompanies
+        <GetAllCompanies />
         <br />
         <GetOneCompany />
         <br />
@@ -42,7 +45,9 @@ function AdminMenu(): JSX.Element {
         <br />
         <DeleteCustomer />
         <br />
-        getAllCustomers getOneCustomer
+        <GetAllCustomers />
+        <br />
+        <GetOneCustomer />
       </div>
     </div>
   );
