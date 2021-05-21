@@ -7,6 +7,7 @@ import AddCompany from "../AddCompany/AddCompany";
 import AddCustomer from "../AddCustomer/AddCustomer";
 import DeleteCompany from "../DeleteCompany/DeleteCompany";
 import DeleteCustomer from "../DeleteCustomer/DeleteCustomer";
+import GetOneCompany from "../getOneComapny/getOneCompany";
 import UpdateCompany from "../UpdateCompany/UpdateCompany";
 import UpdateCustomer from "../UpdateCustomer/UpdateCustomer";
 import "./AdminMenu.css";
@@ -31,7 +32,9 @@ function AdminMenu(): JSX.Element {
         <br />
         <DeleteCompany />
         <br />
-        getAllCompanies getOneCompany
+        getAllCompanies
+        <br />
+        <GetOneCompany />
         <br />
         <AddCustomer />
         <br />
