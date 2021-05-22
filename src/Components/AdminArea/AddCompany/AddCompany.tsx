@@ -33,38 +33,35 @@ function AddCompany(): JSX.Element {
   }
 
   return (
-    <form className="AddCompany Box" onSubmit={handleSubmit(send)}>
+    <form className="AddCompany" onSubmit={handleSubmit(send)}>
       <Typography variant="h2" className="Headline">
         Add a Company
       </Typography>
 
       <TextField
+        className="button"
         {...register("name")}
         label="Name"
-        variant="outlined"
+        variant="filled"
         fullWidth
       />
-      <br />
-      <br />
 
       <TextField
+        className="button"
         {...register("email")}
         label="Email"
-        variant="outlined"
+        variant="filled"
         fullWidth
       />
-      <br />
-      <br />
 
       <TextField
+        className="button"
         {...register("password")}
         label="Password"
-        variant="outlined"
+        variant="filled"
         type="password"
         fullWidth
       />
-      <br />
-      <br />
 
       <ButtonGroup variant="text" fullWidth>
         <Button type="submit" color="primary">
