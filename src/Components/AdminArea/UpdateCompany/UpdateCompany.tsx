@@ -31,7 +31,7 @@ function UpdateCompany(): JSX.Element {
 
   return (
     <form className="UpdateCompany Box" onSubmit={handleSubmit(send)}>
-      <Typography variant="h2" className="Headline">
+      <Typography variant="h3" className="Headline">
           Update Existing Company
       </Typography>
 
@@ -41,8 +41,6 @@ function UpdateCompany(): JSX.Element {
         variant="outlined"
         fullWidth
       />
-      <br />
-      <br />
 
       <TextField
         {...register("name")}
@@ -50,8 +48,6 @@ function UpdateCompany(): JSX.Element {
         variant="outlined"
         fullWidth
       />
-      <br />
-      <br />
 
       <TextField
         {...register("email")}
@@ -59,8 +55,6 @@ function UpdateCompany(): JSX.Element {
         variant="outlined"
         fullWidth
       />
-      <br />
-      <br />
 
       <TextField
         {...register("password")}
@@ -69,8 +63,6 @@ function UpdateCompany(): JSX.Element {
         type="password"
         fullWidth
       />
-      <br />
-      <br />
 
       <ButtonGroup variant="text" fullWidth>
         <Button type="submit" color="primary">
