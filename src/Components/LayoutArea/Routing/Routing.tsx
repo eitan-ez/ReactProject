@@ -5,6 +5,7 @@ import CompanyMenu from "../../CompanyArea/CompanyMenu";
 import CustomerMenu from "../../CustomerArea/CustomerMenu";
 import AddCompany from "../../AdminArea/AddCompany/AddCompany";
 import store from "../../../Redux/Store";
+import Logout from "../AuthArea/Logout";
 
 function Routing(): JSX.Element {
     return (
@@ -15,6 +16,9 @@ function Routing(): JSX.Element {
                 <Route path="/admin" component={AdminMenu} exact/>
                 <Route path="/company" component={CompanyMenu} exact/>
                 <Route path="/customer" component={CustomerMenu} exact/>
+
+                <Route path="/logout" component={Logout} exact />
+
 
                 <Redirect from="/" to="/home" exact/>
 

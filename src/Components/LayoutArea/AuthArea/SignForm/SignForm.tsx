@@ -10,12 +10,12 @@ import {
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
-import CredentialsModel from "../../../Models/CredentialsModel";
-import { UserModel } from "../../../Models/UserModel";
-import { loginAction } from "../../../Redux/AuthState";
-import store from "../../../Redux/Store";
-import globals from "../../../Services/Globals";
-import notify from "../../../Services/Notification";
+import CredentialsModel from "../../../../Models/CredentialsModel";
+import { UserModel, UserType } from "../../../../Models/UserModel";
+import { loginAction } from "../../../../Redux/AuthState";
+import store from "../../../../Redux/Store";
+import globals from "../../../../Services/Globals";
+import notify from "../../../../Services/Notification";
 import "./SignForm.css";
 
 function SignForm(): JSX.Element {
@@ -24,13 +24,33 @@ function SignForm(): JSX.Element {
 
   async function send(credentials: CredentialsModel) {
     try {
-      const response = await axios.post<UserModel>(
-        globals.urls.adminLogin,
-        credentials
-      );
-      store.dispatch(loginAction(response.data));
-      notify.success("You have been successfully logged in!");
-      history.push("/admin"); // Redirect to /admin on success
+      if (credentials.userType === UserType.ADMIN) {
+        const response = await axios.post<UserModel>(
+          globals.urls.adminLogin,
+          credentials
+        );
+        store.dispatch(loginAction(response.data));
+        notify.success("You have been successfully logged in!");
+        history.push("/admin");
+      }
+      if (credentials.userType === UserType.COMPANY) {
+        const response = await axios.post<UserModel>(
+          globals.urls.companyLogin,
+          credentials
+        );
+        store.dispatch(loginAction(response.data));
+        notify.success("You have been successfully logged in!");
+        history.push("/company");
+      }
+      if (credentials.userType === UserType.CUSTOMER) {
+        const response = await axios.post<UserModel>(
+          globals.urls.customerLogin,
+          credentials
+        );
+        store.dispatch(loginAction(response.data));
+        notify.success("You have been successfully logged in!");
+        history.push("/customer");
+      }
     } catch (err) {
       // notify.error(err);
       alert(err);
@@ -38,10 +58,7 @@ function SignForm(): JSX.Element {
   }
 
   return (
-    <form
-      className="SignForm Box"
-      onSubmit={handleSubmit(send)}
-    >
+    <form className="SignForm Box" onSubmit={handleSubmit(send)}>
       <Typography variant="h2" className="Headline">
         Sign in
       </Typography>

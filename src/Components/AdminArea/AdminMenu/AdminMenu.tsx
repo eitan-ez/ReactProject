@@ -223,7 +223,7 @@ class AdminMenu extends Component<{}, AdminMenuState> {
               </div>
             ) : (
               <>
-                <div className="menu-card__trace">-"</div>
+                <div className="menu-card__trace">-</div>
                 <div className="menu-card__name">
                   <h5>Delete Customer</h5>
                   <p>completely delete existing customer</p>
