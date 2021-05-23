@@ -37,8 +37,6 @@ function AddCustomer(): JSX.Element {
             variant="outlined"
             fullWidth
             />
-          <br />
-          <br />
 
             <TextField
             {...register("lastName")}
@@ -46,8 +44,6 @@ function AddCustomer(): JSX.Element {
             variant="outlined"
             fullWidth
           />
-          <br />
-          <br />
   
           <TextField
             {...register("email")}
@@ -55,8 +51,6 @@ function AddCustomer(): JSX.Element {
             variant="outlined"
             fullWidth
           />
-          <br />
-          <br />
   
           <TextField
             {...register("password")}
@@ -65,8 +59,6 @@ function AddCustomer(): JSX.Element {
             type="password"
             fullWidth
           />
-          <br />
-          <br />
   
   
           <ButtonGroup variant="text" fullWidth>

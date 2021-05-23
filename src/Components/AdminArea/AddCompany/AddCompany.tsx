@@ -34,7 +34,7 @@ function AddCompany(): JSX.Element {
 
   return (
     <form className="AddCompany" onSubmit={handleSubmit(send)}>
-      <Typography variant="h2" className="Headline">
+      <Typography variant="h2" className="Headline" color="textPrimary">
         Add a Company
       </Typography>
 
@@ -64,10 +64,10 @@ function AddCompany(): JSX.Element {
       />
 
       <ButtonGroup variant="text" fullWidth>
-        <Button type="submit" color="primary">
+        <Button type="submit" color="primary" variant="outlined">
           Send
         </Button>
-        <Button type="reset" color="secondary">
+        <Button type="reset" color="secondary" variant="outlined">
           Cancel
         </Button>
       </ButtonGroup>
