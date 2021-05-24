@@ -13,271 +13,138 @@ import "./AdminMenu.scss";
 import store from "../../../Redux/Store";
 import notify from "../../../Services/Notification";
 import { UserType } from "../../../Models/UserModel";
+import { RouteComponentProps } from "react-router";
+import MethodCard from "../MethodCard/MethodCard";
+import { Typography } from "@material-ui/core";
 
-interface AdminMenuState {
-  addCompany: boolean;
-  updateCompany: boolean;
-  deleteCompany: boolean;
-  getAllCompanies: boolean;
-  getOneCompany: boolean;
-  updateCustomer: boolean;
-  addCustomer: boolean;
-  getOneCustomer: boolean;
-  getAllCustomers: boolean;
-  deleteCustomer: boolean;
-}
+interface AdminMenuProps extends RouteComponentProps {}
 
-class AdminMenu extends Component<{}, AdminMenuState> {
-
-  public constructor(props: {}) {
+class AdminMenu extends Component<AdminMenuProps> {
+  public constructor(props: AdminMenuProps) {
     super(props);
-    this.state = {
-      addCompany: false,
-      updateCompany: false,
-      deleteCompany: false,
-      getAllCompanies: false,
-      getOneCompany: false,
-      updateCustomer: false,
-      addCustomer: false,
-      getOneCustomer: false,
-      getAllCustomers: false,
-      deleteCustomer: false,
-    };
   }
 
   componentDidMount() {
-    console.log(store.getState().authState.user?.userType);
     if (store.getState().authState.user?.userType !== UserType.ADMIN) {
-      notify.error("please log in in order to add a product");
-      console.log("a");
+      notify.error("please log in as admin in order to access the Admin Menu");
+      this.props.history.push("/home");
     }
   }
+
   public render(): JSX.Element {
     return (
-      <ul className="AdminMenu">
-        <li
-          className="menu-card"
-          onClick={() => this.setState({ addCompany: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.addCompany === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                  <AddCompany />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">+</div>
-                <div className="menu-card__name">
-                  <h5>Add company</h5>
-                  <p>Add a new company to the DB</p>{" "}
-                </div>
-              </>
-            )}
-          </div>
-        </li>
-        <li
-          className="menu-card"
-          onClick={() => this.setState({ updateCompany: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.updateCompany === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                  <UpdateCompany />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">^</div>
-                <div className="menu-card__name">
-                  <h5>Update Company</h5>
-                  <p>Update existing company</p>
-                </div>
-              </>
-            )}
-          </div>
-        </li>
-        <li
-          className="menu-card"
-          onClick={() => this.setState({ deleteCompany: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.deleteCompany === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                  <DeleteCompany />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">-</div>
-                <div className="menu-card__name">
-                  <h5>Delete Company</h5>
-                  <p>Completely delete existing company from DB</p>
-                </div>
-              </>
-            )}
-          </div>
-        </li>
-        <li
-          className="menu-card"
-          onClick={() => this.setState({ getAllCompanies: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.getAllCompanies === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                  <GetAllCompanies />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">^</div>
-                <div className="menu-card__name">
-                  <h5>Get All Companies</h5>
-                  <p>Get a list of all existing Companies</p>
-                </div>
-              </>
-            )}
-          </div>
-        </li>
-        <li
-          className="menu-card"
-          onClick={() => this.setState({ getOneCompany: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.getOneCompany === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                  <GetOneCompany />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">~</div>
-                <div className="menu-card__name">
-                  <h5>Get One Company</h5>
-                  <p>Get one company by it's ID</p>
-                </div>
-              </>
-            )}
-          </div>
-        </li>
-        <li
-          className="menu-card"
-          onClick={() => this.setState({ addCustomer: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.addCustomer === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                  <AddCustomer />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">^</div>
-                <div className="menu-card__name">
-                  <h5>Add Customer</h5>
-                  <p>Add customer to the DB</p>
-                </div>
-              </>
-            )}
-          </div>
-        </li>
-        <li
-          className="menu-card"
-          onClick={() => this.setState({ updateCustomer: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.updateCustomer === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                  <UpdateCustomer />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">-</div>
-                <div className="menu-card__name">
-                  <h5>Update Customer</h5>
-                  <p>Update existing customer</p>
-                </div>
-              </>
-            )}
-          </div>
-        </li>
+      <>
+        <Typography variant="h1">Admin Methods Menu</Typography>
+        <Typography variant="h5">
+          Choose a method and click on it (magic will happen)
+        </Typography>
+        <ul className="AdminMenu">
+          <li className="menu-card">
+            <MethodCard
+              name="Add company"
+              description="Add a new company to the DB"
+              sign="&#10009;"
+            >
+              <AddCompany />
+            </MethodCard>
+          </li>
 
-        <li
-          className="menu-card"
-          onClick={() => this.setState({ deleteCustomer: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.deleteCustomer === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                  <DeleteCustomer />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">-</div>
-                <div className="menu-card__name">
-                  <h5>Delete Customer</h5>
-                  <p>completely delete existing customer</p>
-                </div>
-              </>
-            )}
-          </div>
-        </li>
+          <li className="menu-card">
+            <MethodCard
+              name="Update Company"
+              description="Update existing company"
+              sign="?"
+            >
+              <UpdateCompany />
+            </MethodCard>
+          </li>
 
-        <li
-          className="menu-card"
-          onClick={() => this.setState({ getAllCustomers: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.getAllCustomers === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                  <GetAllCustomers />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">^</div>
-                <div className="menu-card__name">
-                  <h5>Get All Customers</h5>
-                  <p>Get all customers from the DB</p>
-                </div>
-              </>
-            )}
-          </div>
-        </li>
-        <li
-          className="menu-card"
-          onClick={() => this.setState({ getOneCustomer: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.getOneCustomer === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                  <GetOneCustomer />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">-</div>
-                <div className="menu-card__name">
-                  <h5>Get One Customer</h5>
-                  <p>Get one customer from the DB</p>
-                </div>
-              </>
-            )}
-          </div>
-        </li>
-      </ul>
+          <li className="menu-card">
+            <MethodCard
+              name="Delete Company"
+              description="Completely delete existing company from DB"
+              sign="&#10006;"
+            >
+              <DeleteCompany />
+            </MethodCard>
+          </li>
+
+          <li className="menu-card">
+            <MethodCard
+              name="Get All Companies"
+              description="Get a list of all existing Companies"
+              sign="&darr;"
+            >
+              <GetAllCompanies />
+            </MethodCard>
+          </li>
+
+          <li className="menu-card">
+            <MethodCard
+              name="Get One Company"
+              description="Get one company by it's ID"
+              sign="&darr;"
+            >
+              <GetOneCompany />
+            </MethodCard>
+          </li>
+
+          <li className="menu-card">
+            <MethodCard
+              name="Add Customer"
+              description="Add customer to the DB"
+              sign="&#10009;"
+            >
+              <AddCustomer />
+            </MethodCard>
+          </li>
+          <li className="menu-card">
+            <MethodCard
+              name="Update Customer"
+              description="Update existing customer"
+              sign="?"
+            >
+              <UpdateCustomer />
+            </MethodCard>
+          </li>
+
+          <li className="menu-card">
+            <MethodCard
+              name="Delete Customer"
+              description="completely delete existing customer"
+              sign="&#10006;"
+            >
+              <DeleteCustomer />
+            </MethodCard>
+          </li>
+
+          <li
+            className="menu-card"
+            onClick={() => this.setState({ getAllCustomers: true })}
+          >
+            <MethodCard
+              name="Get All Customers"
+              description="Get all customers from the DB"
+              sign="&darr;"
+            >
+              <GetAllCustomers />
+            </MethodCard>
+          </li>
+
+          <li
+            className="menu-card"
+            onClick={() => this.setState({ getOneCustomer: true })}
+          >
+            <MethodCard
+              name="Get One Customer"
+              description="Get one customer from the DB"
+              sign="&darr;"
+            >
+              <GetOneCustomer />
+            </MethodCard>
+          </li>
+        </ul>
+      </>
     );
   }
 }

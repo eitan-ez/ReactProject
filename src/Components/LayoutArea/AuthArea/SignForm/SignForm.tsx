@@ -78,7 +78,6 @@ function SignForm(): JSX.Element {
         label="Password"
         variant="outlined"
         type="password"
-        // className="TextBox"
         fullWidth
       />
       <br />

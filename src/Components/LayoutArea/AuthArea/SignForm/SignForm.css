@@ -2,10 +2,11 @@
         margin: 20px;
         padding: 20px;
         width: 450px;
+        background-color: rgb(200, 200, 200) !important;
     }
     
     .SignForm > .Headline { 
+        color: rgb(20, 20, 20) !important;
         text-align: center;
     }
     
-

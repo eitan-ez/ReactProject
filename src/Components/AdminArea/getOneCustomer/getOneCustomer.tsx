@@ -11,7 +11,6 @@ function GetOneCustomer(): JSX.Element {
   const [customer, setCustomer] = useState(null);
 
   return (
-    <>
       <form
         className="getOneCustomer Box"
         onSubmit={handleSubmit(async (sendCustomer: CustomerModel) => {
@@ -46,11 +45,10 @@ function GetOneCustomer(): JSX.Element {
             Cancel
           </Button>
         </ButtonGroup>
-      </form>
       <div>
       {customer != null && <span>First Name = {customer.firstName}, Last Name = {customer.lastName}, email = {customer.email}, password = {customer.password} </span> }
       </div>
-    </>
+      </form>
   );
 }
 

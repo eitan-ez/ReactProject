@@ -1,18 +1,33 @@
-import "./CompanyMenu.css";
+import { Component } from "react";
+import { RouteComponentProps } from "react-router";
+import { UserType } from "../../Models/UserModel";
+import "./CompanyMenu.scss";
 
-function CompanyMenu(): JSX.Element {
+interface CompanyMenuState {}
 
-    return(
-        <div className="CompanyMenu">
-            addCoupon
-            updateCoupon
-            deleteCoupon
-            getCompanyCoupons
-            getCouponsByCategory
-            getCouponsByMaxPrice
-            getCompanyDetails
-        </div>
+interface CompanyMenuProps extends RouteComponentProps {}
+
+class CompanyMenu extends Component<CompanyMenuProps, CompanyMenuState> {
+  public constructor(props: CompanyMenuProps) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    // if (store.getState().authState.user?.userType !== UserType.COMPANY) {
+    //   notify.error("please log in as company in order to access the Company Menu");
+    //   this.props.history.push("/home");
+    // }
+  }
+
+  public render(): JSX.Element {
+    return (
+      <div className="CompanyMenu">
+        addCoupon updateCoupon deleteCoupon getCompanyCoupons
+        getCouponsByCategory getCouponsByMaxPrice getCompanyDetails
+      </div>
     );
+  }
 }
 
 export default CompanyMenu;
