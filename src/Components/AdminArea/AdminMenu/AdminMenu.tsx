@@ -39,7 +39,7 @@ class AdminMenu extends Component<AdminMenuProps> {
           Choose a method and click on it (magic will happen)
         </Typography>
         <ul className="AdminMenu">
-          <li className="menu-card">
+          <li className="menuCard">
             <MethodCard
               name="Add company"
               description="Add a new company to the DB"
@@ -49,7 +49,7 @@ class AdminMenu extends Component<AdminMenuProps> {
             </MethodCard>
           </li>
 
-          <li className="menu-card">
+          <li className="menuCard">
             <MethodCard
               name="Update Company"
               description="Update existing company"
@@ -59,7 +59,7 @@ class AdminMenu extends Component<AdminMenuProps> {
             </MethodCard>
           </li>
 
-          <li className="menu-card">
+          <li className="menuCard">
             <MethodCard
               name="Delete Company"
               description="Completely delete existing company from DB"
@@ -69,7 +69,7 @@ class AdminMenu extends Component<AdminMenuProps> {
             </MethodCard>
           </li>
 
-          <li className="menu-card">
+          <li className="menuCard">
             <MethodCard
               name="Get All Companies"
               description="Get a list of all existing Companies"
@@ -79,7 +79,7 @@ class AdminMenu extends Component<AdminMenuProps> {
             </MethodCard>
           </li>
 
-          <li className="menu-card">
+          <li className="menuCard">
             <MethodCard
               name="Get One Company"
               description="Get one company by it's ID"
@@ -89,7 +89,7 @@ class AdminMenu extends Component<AdminMenuProps> {
             </MethodCard>
           </li>
 
-          <li className="menu-card">
+          <li className="menuCard">
             <MethodCard
               name="Add Customer"
               description="Add customer to the DB"
@@ -98,7 +98,7 @@ class AdminMenu extends Component<AdminMenuProps> {
               <AddCustomer />
             </MethodCard>
           </li>
-          <li className="menu-card">
+          <li className="menuCard">
             <MethodCard
               name="Update Customer"
               description="Update existing customer"
@@ -108,7 +108,7 @@ class AdminMenu extends Component<AdminMenuProps> {
             </MethodCard>
           </li>
 
-          <li className="menu-card">
+          <li className="menuCard">
             <MethodCard
               name="Delete Customer"
               description="completely delete existing customer"
@@ -119,7 +119,7 @@ class AdminMenu extends Component<AdminMenuProps> {
           </li>
 
           <li
-            className="menu-card"
+            className="menuCard"
             onClick={() => this.setState({ getAllCustomers: true })}
           >
             <MethodCard
@@ -132,7 +132,7 @@ class AdminMenu extends Component<AdminMenuProps> {
           </li>
 
           <li
-            className="menu-card"
+            className="menuCard"
             onClick={() => this.setState({ getOneCustomer: true })}
           >
             <MethodCard

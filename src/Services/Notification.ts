@@ -19,10 +19,14 @@ class Notify {
             return err;
         }
         
+        if(typeof err?.response?.data?.message === "string") {
+            return err.response.data.message;
+        }
+        
         if(typeof err?.response?.data === "string") {
             return err.response.data;
         }
-
+        
         if(Array.isArray(err?.response?.data)) {
             return err.response.data[0];
         }

@@ -1,14 +1,12 @@
 import { Component, ReactNode } from "react";
-import "./MethodCard.css";
-
 
 interface MethodCardState{
   ShowInnerComponent: boolean;
 }
 
 interface MethodCardProps {
-  name: String;
-  description: String;
+  name: string;
+  description: string;
   sign: string;
   children: ReactNode;
 }
@@ -25,20 +23,18 @@ class MethodCard extends Component<MethodCardProps, MethodCardState> {
   public render(): JSX.Element {
 
   return (
-    <div className="menu-card__inner" onClick={() => this.setState({ ShowInnerComponent: true})}>
+    <div className="menuCard__inner" onClick={() => this.setState({ ShowInnerComponent: true})}>
       {this.state.ShowInnerComponent === true ? (
-        <div className="menu-card__shape">
-          <div className="menu-card__method">
+        <div className="menuCard__shape">
+          <div className="menuCard__method">
             {this.props.children}
           </div>
         </div>
       ) : (
         <>
-          <div className="menu-card__trace">{this.props.sign}</div>
-          <div className="menu-card__name">
+          <div className="menuCard__trace">{this.props.sign}</div>
             <h5>{this.props.name}</h5>
             <p>{this.props.description}</p>
-          </div>
         </>
       )}
     </div>

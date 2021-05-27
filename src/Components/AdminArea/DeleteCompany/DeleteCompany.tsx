@@ -18,7 +18,7 @@ function DeleteCompany(): JSX.Element {
       );
       notify.success("company with id: " + company.id + " has been deleted.");
     } catch (err) {
-      console.log(err);
+      notify.error(err);
     }
   }
 
@@ -31,18 +31,18 @@ function DeleteCompany(): JSX.Element {
       <TextField
         {...register("id")}
         label="Company ID"
-        variant="outlined"
+        variant="filled"
         fullWidth
       />
       <br />
       <br />
 
       <ButtonGroup variant="text" fullWidth>
-        <Button type="submit" color="primary">
+        <Button type="submit" color="primary" variant="contained">
           Send
         </Button>
-        <Button type="reset" color="secondary">
-          Cancel
+        <Button type="reset" color="secondary" variant="contained">
+          Clear
         </Button>
       </ButtonGroup>
     </form>

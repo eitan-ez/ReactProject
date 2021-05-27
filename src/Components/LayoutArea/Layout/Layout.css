@@ -2,9 +2,3 @@
         height: 100%;
         box-sizing: border-box;
     }
-    .Layout > footer {
-        position: absolute;
-        top: auto;
-        text-align: center;
-    }
-    

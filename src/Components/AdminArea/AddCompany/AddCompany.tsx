@@ -33,7 +33,7 @@ function AddCompany(): JSX.Element {
   }
 
   return (
-    <form className="AddCompany" onSubmit={handleSubmit(send)}>
+    <form className="AddCompany Box" onSubmit={handleSubmit(send)}>
       <Typography variant="h2" className="Headline" color="textPrimary">
         Add a Company
       </Typography>
@@ -42,7 +42,7 @@ function AddCompany(): JSX.Element {
         className="button"
         {...register("name")}
         label="Name"
-        variant="filled"
+        variant="standard"
         fullWidth
       />
 
@@ -50,7 +50,7 @@ function AddCompany(): JSX.Element {
         className="button"
         {...register("email")}
         label="Email"
-        variant="filled"
+        variant="standard"
         fullWidth
       />
 
@@ -58,7 +58,7 @@ function AddCompany(): JSX.Element {
         className="button"
         {...register("password")}
         label="Password"
-        variant="filled"
+        variant="standard"
         type="password"
         fullWidth
       />
@@ -68,7 +68,7 @@ function AddCompany(): JSX.Element {
           Send
         </Button>
         <Button type="reset" color="secondary" variant="outlined">
-          Cancel
+          Clear
         </Button>
       </ButtonGroup>
     </form>

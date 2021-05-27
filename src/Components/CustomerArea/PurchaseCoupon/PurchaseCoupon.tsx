@@ -18,12 +18,13 @@ function PurchaseCoupon(): JSX.Element {
       );
       notify.success("you have been successfully bought the coupon");
     } catch (err) {
-      notify.error(err.message);
+      notify.error(err);
+      console.log(err.response.data.message);
     }
   }
 
   return (
-    <form className="PurchaseCoupon" onSubmit={handleSubmit(send)}>
+    <form className="PurchaseCoupon Box" onSubmit={handleSubmit(send)}>
       <TextField
         className="button"
         {...register("couponId")}

@@ -1,23 +1,44 @@
-html, body, #root {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    text-align: center;
-    font-style: italic;
-	background: #2a2a2e;
-	color: #FFFFFF;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-	text-align: center;
-
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  text-align: center;
+  font-style: italic;
+  background: #2a2a2e;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
-
 .Box {
-    display: inline-block;
-    text-align: left;
-    padding: 0 10px;
-    margin: 10px;
-    /* border-radius: 10px; */
-    box-shadow: 5px 5px 10px;
-    color:hsl(0, 0%, 69%);
+  text-align: left;
+  padding: 0 10px;
+  margin: 10px;
+  border-radius: 17px;
+  background-color: hsl(0, 0%, 24%);
+}
+
+.Box > * {
+  color: #ffffff !important;
+}
+
+/* making sure MUI looks good in dark mode */
+.MuiInputBase-input,
+.MuiOutlinedInput-input,
+.PrivateNotchedOutline-root-1,
+.MuiOutlinedInput-notchedOutline,
+.PrivateNotchedOutline-legendLabelled-3,
+.MuiFormLabel-root {
+  border-color: rgb(128, 128, 128) !important;
+  color: #ffffff !important;
+}
+
+.MuiButton-containedPrimary {
+  background-color: #114a1c !important;
+}
+
+.MuiButton-containedSecondary {
+  background-color: #690000 !important;
 }

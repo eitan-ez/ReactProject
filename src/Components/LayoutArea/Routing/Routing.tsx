@@ -5,7 +5,7 @@ import CompanyMenu from "../../CompanyArea/CompanyMenu";
 import CustomerMenu from "../../CustomerArea/CustomerMenu/CustomerMenu";
 import AddCompany from "../../AdminArea/AddCompany/AddCompany";
 import store from "../../../Redux/Store";
-import Logout from "../AuthArea/Logout";
+import Logout from "../AuthArea/Logout/Logout";
 
 function Routing(): JSX.Element {
     return (

@@ -1,15 +1,8 @@
 .AddCompany {
-    background-color: rgb(255, 255, 255) !important;
-    opacity: 1;
     height: 100%;
     margin: 2%;
 }
 
 .Headline { 
     text-align: center;
-}
-
-.button{
-    /* background-color: rgb(255, 255, 255) !important; */
-    opacity: 1 !important;
 }

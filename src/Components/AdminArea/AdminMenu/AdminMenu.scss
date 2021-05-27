@@ -17,7 +17,7 @@
     font: 24px "Cinzel";
   }
 
-  .menu-card {
+  .menuCard {
     background: linear-gradient(315deg, #9d523c 0%, #f2a65a 74%);
     width: 400px;
     padding: 5px;
@@ -79,8 +79,7 @@
     &__trace {
       position: relative;
       width: 100%;
-      opacity: 0.4;
-      height: 50%;
+      height: 60%;
       top: 0;
       background-repeat: no-repeat;
       background-size: 70%;
@@ -91,7 +90,6 @@
     &__method {
       position: initial;
       width: 100%;
-      opacity: 0.4;
       height: 480px;
       top: 0;
       z-index: 200;

@@ -81,7 +81,6 @@ function SignForm(): JSX.Element {
         fullWidth
       />
       <br />
-      <br />
 
       <InputLabel>Customer Type</InputLabel>
       <Select {...register("userType")} variant="outlined" fullWidth>
@@ -90,11 +89,13 @@ function SignForm(): JSX.Element {
         <MenuItem value={"CUSTOMER"}>Customer</MenuItem>
       </Select>
 
+      <br />
+      <br />
       <ButtonGroup variant="text" fullWidth>
-        <Button type="submit" color="primary">
+        <Button className= "muiButton" type="submit" color="primary" variant="contained">
           Send
         </Button>
-        <Button type="reset" color="secondary">
+        <Button type="reset" color="secondary" variant="contained">
           Cancel
         </Button>
       </ButtonGroup>

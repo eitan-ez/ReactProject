@@ -1,6 +1,8 @@
 import { Component } from "react";
 import { RouteComponentProps } from "react-router";
 import { UserType } from "../../../Models/UserModel";
+import store from "../../../Redux/Store";
+import GetCustomerCoupons from "../GetCustomerCoupons/GetCustomerCoupons";
 import PurchaseCoupon from "../PurchaseCoupon/PurchaseCoupon";
 import "./CustomerMenu.scss";
 
@@ -25,35 +27,14 @@ class CustomerMenu extends Component<CompanyMenuProps, CustomerMenuState> {
     // }
   }
 
-  
   public render(): JSX.Element {
+    console.log(store.getState().authState.user.token)
     return (
-      <ul className="CustomerMenu">
-          <li
-          className="menu-card"
-          onClick={() => this.setState({ purchaseCoupon: true })}
-        >
-          <div className="menu-card__inner">
-            {this.state.purchaseCoupon === true ? (
-              <div className="menu-card__shape">
-                <div className="menu-card__method">
-                <PurchaseCoupon />
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="menu-card__trace">+</div>
-                <div className="menu-card__name">
-                  <h5>Add company</h5>
-                  <p>Add a new company to the DB</p>{" "}
-                </div>
-              </>
-            )}
-          </div>
-        </li>
-        getCoupons getCouponsByCategory getCouponsByMaxPrice
-        getCustomerDetails
-      </ul>
+      <div className="CustomerMenu">
+        <PurchaseCoupon />
+        <GetCustomerCoupons />
+        getCouponsByCategory getCouponsByMaxPrice getCustomerDetails
+      </div>
     );
   }
 }

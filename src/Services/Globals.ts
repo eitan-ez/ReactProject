@@ -15,6 +15,7 @@ class DevelopmentGlobals extends Globals {
 
         customerLogin: "http://localhost:8080/api/customer/login", 
         customerPurchase: "http://localhost:8080/api/customer/purchase-coupon", 
+        customer: "http://localhost:8080/api/customer/", 
         
     };
 }
@@ -32,6 +33,7 @@ class ProductionGlobals extends Globals {
         
         customerLogin: "http://localhost:8080/api/customer/login", 
         customerPurchase: "http://localhost:8080/api/customer/purchase-coupon", 
+        customer: "http://localhost:8080/api/customer/", 
         
     };
 }
