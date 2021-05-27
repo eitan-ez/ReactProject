@@ -12,7 +12,6 @@ function UpdateCustomer(): JSX.Element {
 
   async function send(customer: CustomerModel) {
     try {
-      console.log(customer);
       const response = await jwtAxios.put<CustomerModel>(
         globals.urls.adminUpdate + "customer",
         customer
@@ -23,8 +22,7 @@ function UpdateCustomer(): JSX.Element {
         "customer with id: " + addedCustomer.id + " has been updated."
       );
     } catch (err) {
-      console.log(store.getState().authState.user.token);
-      console.log(err);
+      notify.error(err);
     }
   }
 

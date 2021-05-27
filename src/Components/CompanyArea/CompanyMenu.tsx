@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { RouteComponentProps } from "react-router";
 import { UserType } from "../../Models/UserModel";
+import AddCoupon from "./AddCoupon/AddCoupon";
 import "./CompanyMenu.scss";
 
 interface CompanyMenuState {}
@@ -23,7 +24,9 @@ class CompanyMenu extends Component<CompanyMenuProps, CompanyMenuState> {
   public render(): JSX.Element {
     return (
       <div className="CompanyMenu">
-        addCoupon updateCoupon deleteCoupon getCompanyCoupons
+        <AddCoupon />
+        <br />
+        updateCoupon deleteCoupon getCompanyCoupons
         getCouponsByCategory getCouponsByMaxPrice getCompanyDetails
       </div>
     );

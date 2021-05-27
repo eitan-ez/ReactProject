@@ -39,9 +39,8 @@ class GetAllCompanies extends Component<{}, GetAllCompaniesState> {
                 globals.urls.adminGet + "all-companies"
               );
               this.setState({ companies: response.data });
-              console.log(this.state);
             } catch (err) {
-              alert(err.message);
+              notify.error(err.message);
             }
           }}
         >

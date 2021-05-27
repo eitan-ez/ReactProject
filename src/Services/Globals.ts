@@ -11,6 +11,7 @@ class DevelopmentGlobals extends Globals {
         adminDelete: "http://localhost:8080/api/admin/delete-",
         adminGet: "http://localhost:8080/api/admin/get-",
 
+        company: "http://localhost:8080/api/company/",
         companyLogin: "http://localhost:8080/api/company/login",
 
         customerLogin: "http://localhost:8080/api/customer/login", 
@@ -29,6 +30,7 @@ class ProductionGlobals extends Globals {
         adminDelete: "http://localhost:8080/api/admin/delete-",
         adminGet: "http://localhost:8080/api/admin/get-",
 
+        company: "http://localhost:8080/api/company/", 
         companyLogin: "http://localhost:8080/api/company/login", 
         
         customerLogin: "http://localhost:8080/api/customer/login", 

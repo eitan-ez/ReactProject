@@ -12,7 +12,6 @@ function UpdateCompany(): JSX.Element {
 
   async function send(company: CompanyModel) {
     try {
-      console.log(company);
       const response = await jwtAxios.put<CompanyModel>(
         globals.urls.adminUpdate + "company",
         company
@@ -24,8 +23,7 @@ function UpdateCompany(): JSX.Element {
       );
       // history.push("/products");
     } catch (err) {
-      console.log(store.getState().authState.user.token);
-      console.log(err);
+      notify.error(err);
     }
   }
 

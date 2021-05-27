@@ -25,10 +25,8 @@ function AddCompany(): JSX.Element {
       const addedCompany = response.data;
 
       notify.success("company has been added. id: " + addedCompany.id);
-      // history.push("/products");
     } catch (err) {
-      console.log(store.getState().authState.user.token);
-      console.log(err);
+      notify.error(err);
     }
   }
 

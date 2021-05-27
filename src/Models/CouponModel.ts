@@ -10,6 +10,7 @@ export enum CouponCategory {
 
 export class CouponModel {
 id: number;
+price: number;
 company: CompanyModel
 amount: number;
 title: string;

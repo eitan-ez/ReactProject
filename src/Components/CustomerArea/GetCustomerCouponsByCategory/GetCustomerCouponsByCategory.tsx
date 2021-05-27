@@ -6,13 +6,13 @@ import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
 import CouponCard from "../CouponCard/CouponCard";
 
-interface GetCustomerCouponsState {
+interface GetCustomerCouponsByCategoryState {
   coupons: CouponModel[];
 }
 
 class GetCustomerCouponsByCategory extends Component<
   {},
-  GetCustomerCouponsState
+  GetCustomerCouponsByCategoryState
 > {
   public constructor(props: {}) {
     super(props);
@@ -27,10 +27,10 @@ class GetCustomerCouponsByCategory extends Component<
         <Select
           variant="filled"
           fullWidth
-          onChange={async () => {
+          onChange={async (selectItem) => {
             try {
               const response = await jwtAxios.get<CouponModel[]>(
-                globals.urls.customer + "coupons-by-category"
+                globals.urls.customer + "coupons-by-category/" + selectItem.target.value
               );
               this.setState({ coupons: response.data });
             } catch (err) {

@@ -2,6 +2,7 @@ import { Component } from "react";
 import { CouponModel } from "../../../Models/CouponModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
+import notify from "../../../Services/Notification";
 import CouponCard from "../CouponCard/CouponCard";
 
 interface GetCustomerCouponsState {
@@ -23,13 +24,12 @@ class GetCustomerCoupons extends Component<{}, GetCustomerCouponsState> {
             this.setState({ coupons: response.data });
         }
         catch (err) {
-            alert("Error: " + err.message);
+            notify.error(err);
         }
 
     }
 
     public render(): JSX.Element {
-        console.log(this.state.coupons);
         return (
         
             <ul className="CustomerMenu">

@@ -21,6 +21,7 @@ class CouponCard extends Component<CouponCardProps> {
                 <p>{this.props.coupon.description}</p>
                 <p>category: {this.props.coupon.category}</p>
                 <p>end date: {this.props.coupon.endDate}</p>
+                <p>Price: {this.props.coupon.price}</p>
               </div>
             </div>
           </div>

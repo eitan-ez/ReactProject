@@ -19,7 +19,6 @@ function PurchaseCoupon(): JSX.Element {
       notify.success("you have been successfully bought the coupon");
     } catch (err) {
       notify.error(err);
-      console.log(err.response.data.message);
     }
   }
 

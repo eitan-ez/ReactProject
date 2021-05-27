@@ -52,8 +52,7 @@ function SignForm(): JSX.Element {
         history.push("/customer");
       }
     } catch (err) {
-      // notify.error(err);
-      alert(err);
+      notify.error(err);
     }
   }
 

@@ -16,7 +16,7 @@ function DeleteCustomer(): JSX.Element {
       );
       notify.success("customer with id: " + customer.id + " has been deleted.");
     } catch (err) {
-      console.log(err);
+      notify.error(err);
     }
   }
 

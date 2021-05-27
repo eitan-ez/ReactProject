@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import CustomerModel from "../../../Models/CustomerModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
+import notify from "../../../Services/Notification";
 import "./getOneCustomer.css";
 
 function GetOneCustomer(): JSX.Element {
@@ -21,7 +22,7 @@ function GetOneCustomer(): JSX.Element {
             const customerSent = response.data;
             setCustomer(customerSent);
           } catch (err) {
-            console.log(err);
+            notify.error(err);
           }
         })}
       >

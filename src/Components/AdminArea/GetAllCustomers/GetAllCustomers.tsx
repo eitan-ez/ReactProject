@@ -3,6 +3,7 @@ import { Component } from "react";
 import CustomerModel from "../../../Models/CustomerModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
+import notify from "../../../Services/Notification";
 import "./GetAllCustomers.css";
 
 interface GetAllCustomersState {
@@ -23,9 +24,8 @@ class GetAllCustomers extends Component<{}, GetAllCustomersState> {
         globals.urls.adminGet + "all-customers"
       );
       this.setState({ customers: response.data });
-      console.log(this.state.customers.map((p) => <span key={p.id}>Customer = {p.email}</span>));
     } catch (err) {
-      alert(err.message);
+      notify.error(err);
     }
   }
 
@@ -39,9 +39,8 @@ class GetAllCustomers extends Component<{}, GetAllCustomersState> {
                 globals.urls.adminGet + "all-customers"
               );
               this.setState({ customers: response.data });
-              console.log(this.state);
             } catch (err) {
-              alert(err.message);
+              notify.error(err);
             }}
           }>
           Get All Customers

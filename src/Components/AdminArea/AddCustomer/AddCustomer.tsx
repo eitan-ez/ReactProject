@@ -12,15 +12,13 @@ function AddCustomer(): JSX.Element {
     async function send(customer: CustomerModel) {
       try {
   
-          console.log(customer);
           const response = await jwtAxios.post<CustomerModel>(globals.urls.adminAdd + "customer", customer);
           const addedCustomer = response.data;
-          console.log(customer);
   
           notify.success("customer has been added id: " + addedCustomer.id);
       }
       catch (err) {
-          console.log(err);
+          notify.error(err);
       }
   }
   

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import CompanyModel from "../../../Models/CompanyModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
+import notify from "../../../Services/Notification";
 import "./getOneCompany.css";
 
 function GetOneCompany(): JSX.Element {
@@ -22,7 +23,7 @@ function GetOneCompany(): JSX.Element {
             const companySent = response.data;
             setCompany(companySent);
           } catch (err) {
-            console.log(err);
+            notify.error(err);
           }
         })}
       >
