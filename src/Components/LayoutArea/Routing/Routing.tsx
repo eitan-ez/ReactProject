@@ -1,7 +1,7 @@
 import {Redirect, Route, Switch} from "react-router";
 import AdminMenu from "../../AdminArea/AdminMenu/AdminMenu";
 import Main from "../Home/Main"
-import CompanyMenu from "../../CompanyArea/CompanyMenu";
+import CompanyMenu from "../../CompanyArea/AddCoupon/CompanyMenu/CompanyMenu";
 import CustomerMenu from "../../CustomerArea/CustomerMenu/CustomerMenu";
 import AddCompany from "../../AdminArea/AddCompany/AddCompany";
 import store from "../../../Redux/Store";

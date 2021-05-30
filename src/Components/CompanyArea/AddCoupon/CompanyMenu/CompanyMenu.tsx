@@ -1,8 +1,14 @@
 import { Component } from "react";
 import { RouteComponentProps } from "react-router";
-import { UserType } from "../../Models/UserModel";
-import AddCoupon from "./AddCoupon/AddCoupon";
+import { UserType } from "../../../../Models/UserModel";
+import AddCoupon from "../AddCoupon";
 import "./CompanyMenu.scss";
+import DeleteCoupon from "../../DeleteCoupon/DeleteCoupon";
+import UpdateCoupon from "../../UpdateCoupon/UpdateCoupon";
+import GetCompanyCoupons from "../../GetCompanyCoupons/GetCompanyCoupons";
+import GetCompanyCouponsByMaxPrice from "../../GetCompanyCouponsByMaxPrice/GetCompanyCouponsByMaxPrice";
+import GetCompanyCouponsByCategory from "../../GetCompanyCouponsByCategory/GetCompanyCouponsByCategory";
+import GetCompanyDetails from "../../GetCompanyDetails/GetCompanyDetails";
 
 interface CompanyMenuState {}
 
@@ -26,8 +32,14 @@ class CompanyMenu extends Component<CompanyMenuProps, CompanyMenuState> {
       <div className="CompanyMenu">
         <AddCoupon />
         <br />
-        updateCoupon deleteCoupon getCompanyCoupons
-        getCouponsByCategory getCouponsByMaxPrice getCompanyDetails
+        <UpdateCoupon />
+        <br />
+       <DeleteCoupon />
+        <br />
+       <GetCompanyCoupons />
+       <GetCompanyCouponsByCategory />
+       <GetCompanyCouponsByMaxPrice />
+       <GetCompanyDetails />
       </div>
     );
   }

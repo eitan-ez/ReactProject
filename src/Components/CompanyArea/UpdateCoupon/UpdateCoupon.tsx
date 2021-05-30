@@ -1,25 +1,17 @@
-import {
-  Button,
-  ButtonGroup,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from "@material-ui/core";
+import { Button, ButtonGroup, MenuItem, Select, TextField, Typography } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { CouponModel } from "../../../Models/CouponModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
-import "./AddCoupon.css";
+import "./UpdateCoupon.css";
 
-function AddCoupon(): JSX.Element {
+function UpdateCoupon(): JSX.Element {
   const { register, handleSubmit } = useForm<CouponModel>();
 
   async function send(coupon: CouponModel) {
     try {
-      await jwtAxios.post<CouponModel>(globals.urls.company + "add", coupon);
-
+      await jwtAxios.post<CouponModel>(globals.urls.company + "update", coupon);
       notify.success("coupon has been added.");
     } catch (err) {
       notify.error(err);
@@ -27,7 +19,7 @@ function AddCoupon(): JSX.Element {
   }
 
   return (
-    <form className="AddCoupon Box" onSubmit={handleSubmit(send)}>
+    <form className="UpdateCoupon Box" onSubmit={handleSubmit(send)}>
       <Typography variant="h2" className="Headline" color="textPrimary">
         Add new Coupon
       </Typography>
@@ -78,7 +70,7 @@ function AddCoupon(): JSX.Element {
           shrink: true,
         }}
       />
-      <br/>
+      <br />
       <Select {...register("category")} className="select">
         <MenuItem value="FOOD">Food</MenuItem>
         <MenuItem value="ELECTRICITY">Electricity</MenuItem>
@@ -103,4 +95,4 @@ function AddCoupon(): JSX.Element {
   );
 }
 
-export default AddCoupon;
+export default UpdateCoupon;

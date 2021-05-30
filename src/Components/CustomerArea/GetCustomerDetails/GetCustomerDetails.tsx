@@ -41,7 +41,7 @@ function GetCustomerDetails(): JSX.Element {
         {customer != null && (
           <span>
             First Name = {customer.firstName}, Last Name = {customer.lastName},
-            email = {customer.email}, password = {customer.password}{" "}
+            email = {customer.email}, password = {customer.password}
           </span>
         )}
       </div>

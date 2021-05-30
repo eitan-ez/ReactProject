@@ -4,7 +4,7 @@ import { CouponModel } from "../../../Models/CouponModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
-import CouponCard from "../CouponCard/CouponCard";
+import CouponCard from "../../SharedArea/CouponCard/CouponCard";
 
 interface GetCustomerCouponsByCategoryState {
   coupons: CouponModel[];
