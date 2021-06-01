@@ -1,14 +1,25 @@
-import { Button, ButtonGroup, TextField, Typography } from "@material-ui/core";
+import {
+  Button,
+  ButtonGroup,
+  TextField,
+  ThemeProvider,
+  Typography,
+} from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import CompanyModel from "../../../Models/CompanyModel";
 import store from "../../../Redux/Store";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
+import darkTheme from "../../SharedArea/CreateMuiTheme";
 import "./UpdateCompany.css";
 
 function UpdateCompany(): JSX.Element {
-  const { register, handleSubmit } = useForm<CompanyModel>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CompanyModel>();
 
   async function send(company: CompanyModel) {
     try {
@@ -28,49 +39,86 @@ function UpdateCompany(): JSX.Element {
   }
 
   return (
-    <form className="UpdateCompany Box" onSubmit={handleSubmit(send)}>
-      <Typography variant="h3" className="Headline">
+    <ThemeProvider theme={darkTheme}>
+      <form className="UpdateCompany Box" onSubmit={handleSubmit(send)}>
+        <Typography variant="h3" className="Headline">
           Update Existing Company
-      </Typography>
+        </Typography>
 
-      <TextField
-        {...register("id")}
-        label="Company ID"
-        variant="outlined"
-        fullWidth
-      />
+        <TextField
+          {...register("id", {
+            min: { value: 0, message: "Company ID must be a positive number" },
+          })}
+          label="Company ID"
+          type="number"
+          fullWidth
+          required
+        />
+        {errors.id && <span className="ErrorMessage">{errors.id.message}</span>}
 
-      <TextField
-        {...register("name")}
-        label="Name"
-        variant="outlined"
-        fullWidth
-      />
+        <TextField
+          {...register("name", {
+            minLength: {
+              value: 3,
+              message: "Name must be at least 3 letters.",
+            },
+          })}
+          label="Name"
+          variant="standard"
+          required
+          fullWidth
+        />
+        {errors.name && (
+          <span className="ErrorMessage">{errors.name.message}</span>
+        )}
 
-      <TextField
-        {...register("email")}
-        label="Email"
-        variant="outlined"
-        fullWidth
-      />
+        <TextField
+          {...register("email", {
+            minLength: {
+              value: 3,
+              message: "Email must be at least 3 letters.",
+            },
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "This field must be an Email",
+            },
+          })}
+          label="Email"
+          variant="standard"
+          required
+          fullWidth
+        />
+        {errors.email && (
+          <span className="ErrorMessage">{errors.email.message}</span>
+        )}
 
-      <TextField
-        {...register("password")}
-        label="Password"
-        variant="outlined"
-        type="password"
-        fullWidth
-      />
+        <TextField
+          {...register("password", {
+            minLength: {
+              value: 3,
+              message: "Email must be at least 3 letters.",
+            },
+          })}
+          label="Password"
+          variant="standard"
+          type="password"
+          required
+          fullWidth
+        />
+        {errors.password && (
+          <span className="ErrorMessage">{errors.password.message}</span>
+        )}
 
-      <ButtonGroup variant="text" fullWidth>
-        <Button type="submit" color="primary">
-          Send
-        </Button>
-        <Button type="reset" color="secondary">
-          Cancel
-        </Button>
-      </ButtonGroup>
-    </form>
+        <ButtonGroup variant="text" fullWidth>
+          <Button type="submit" color="primary">
+            Send
+          </Button>
+          <Button type="reset" color="secondary">
+            Cancel
+          </Button>
+        </ButtonGroup>
+      </form>
+    </ThemeProvider>
   );
 }
 

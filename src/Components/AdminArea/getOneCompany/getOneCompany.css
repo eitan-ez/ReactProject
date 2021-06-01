@@ -2,3 +2,9 @@
     height: 100%;
     margin: 2%;
 }
+
+.companyDetails {
+    font-weight: bold;
+    font-size: 20px;
+    color: white !important;
+}

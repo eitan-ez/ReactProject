@@ -1,10 +1,19 @@
-import { Button } from "@material-ui/core";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  ThemeProvider,
+} from "@material-ui/core";
 import { Component } from "react";
 import CustomerModel from "../../../Models/CustomerModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
-import "./GetAllCustomers.css";
+import darkTheme from "../../SharedArea/CreateMuiTheme";
 
 interface GetAllCustomersState {
   customers: CustomerModel[];
@@ -18,11 +27,12 @@ class GetAllCustomers extends Component<{}, GetAllCustomersState> {
     };
   }
 
-  public async getFromDb() {
+  public async componentDidMount() {
     try {
       const response = await jwtAxios.get<CustomerModel[]>(
         globals.urls.adminGet + "all-customers"
       );
+      console.log(response.data);
       this.setState({ customers: response.data });
     } catch (err) {
       notify.error(err);
@@ -31,21 +41,28 @@ class GetAllCustomers extends Component<{}, GetAllCustomersState> {
 
   public render(): JSX.Element {
     return (
-      <div className="GetAllCustomers Box">
-        <Button
-          onClick={async () => {
-            try {
-              const response = await jwtAxios.get<CustomerModel[]>(
-                globals.urls.adminGet + "all-customers"
-              );
-              this.setState({ customers: response.data });
-            } catch (err) {
-              notify.error(err);
-            }}
-          }>
-          Get All Customers
-        </Button>
-      </div>
+      <ThemeProvider theme={darkTheme}>
+        <Paper>
+          <TableContainer>
+            <Table stickyHeader aria-label="stickyHeader">
+              <TableHead>
+                <TableCell>First Name: </TableCell>
+                <TableCell>Last Name: </TableCell>
+                <TableCell>Email: </TableCell>
+              </TableHead>
+              <TableBody>
+                {this.state.customers.map((customer) => (
+                  <TableRow key={customer.id}>
+                    <TableCell>{customer.firstName}</TableCell>
+                    <TableCell>{customer.lastName}</TableCell>
+                    <TableCell>{customer.email}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </ThemeProvider>
     );
   }
 }

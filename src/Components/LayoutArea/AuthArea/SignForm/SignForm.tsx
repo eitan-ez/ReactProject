@@ -5,6 +5,7 @@ import {
   MenuItem,
   Select,
   TextField,
+  ThemeProvider,
   Typography,
 } from "@material-ui/core";
 import axios from "axios";
@@ -16,11 +17,16 @@ import { loginAction } from "../../../../Redux/AuthState";
 import store from "../../../../Redux/Store";
 import globals from "../../../../Services/Globals";
 import notify from "../../../../Services/Notification";
+import darkTheme from "../../../SharedArea/CreateMuiTheme";
 import "./SignForm.css";
 
 function SignForm(): JSX.Element {
   const history = useHistory();
-  const { register, handleSubmit } = useForm<CredentialsModel>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CredentialsModel>();
 
   async function send(credentials: CredentialsModel) {
     try {
@@ -57,48 +63,74 @@ function SignForm(): JSX.Element {
   }
 
   return (
-    <form className="SignForm Box" onSubmit={handleSubmit(send)}>
-      <Typography variant="h2" className="Headline">
-        Sign in
-      </Typography>
+    <ThemeProvider theme={darkTheme}>
+      <form className="SignForm Box" onSubmit={handleSubmit(send)}>
+        <Typography variant="h2" className="Headline">
+          Sign in
+        </Typography>
 
-      <TextField
-        {...register("email")}
-        label="Email"
-        variant="outlined"
-        // className="TextBox"
-        fullWidth
-      />
-      <br />
-      <br />
+        <TextField
+          {...register("email", {
+            required: "Missing Field",
+            minLength: {
+              value: 3,
+              message: "Email must be at least 3 letters.",
+            },
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "This field must be an Email",
+            },
+          })}
+          label="Email"
+          variant="outlined"
+          fullWidth
+        />
+        {errors.email && <p className="ErrorMessage">{errors.email.message}</p>}
+        <br />
+        <br />
 
-      <TextField
-        {...register("password")}
-        label="Password"
-        variant="outlined"
-        type="password"
-        fullWidth
-      />
-      <br />
+        <TextField
+          {...register("password", {
+            required: "Missing Field",
+            minLength: {
+              value: 3,
+              message: "Password must be at least 3 letters.",
+            },
+          })}
+          label="Password"
+          variant="outlined"
+          type="password"
+          fullWidth
+        />
+        {errors.password && (
+          <p className="ErrorMessage">{errors.password.message}</p>
+        )}
 
-      <InputLabel>Customer Type</InputLabel>
-      <Select {...register("userType")} variant="outlined" fullWidth>
-        <MenuItem value={"ADMIN"}>Admin</MenuItem>
-        <MenuItem value={"COMPANY"}>Company</MenuItem>
-        <MenuItem value={"CUSTOMER"}>Customer</MenuItem>
-      </Select>
+        <br />
 
-      <br />
-      <br />
-      <ButtonGroup variant="text" fullWidth>
-        <Button className= "muiButton" type="submit" color="primary" variant="contained">
-          Send
-        </Button>
-        <Button type="reset" color="secondary" variant="contained">
-          Cancel
-        </Button>
-      </ButtonGroup>
-    </form>
+        <InputLabel>Customer Type</InputLabel>
+        <Select {...register("userType")} variant="outlined" fullWidth required>
+          <MenuItem value={"ADMIN"}>Admin</MenuItem>
+          <MenuItem value={"COMPANY"}>Company</MenuItem>
+          <MenuItem value={"CUSTOMER"}>Customer</MenuItem>
+        </Select>
+        <br />
+        <br />
+        <ButtonGroup variant="text" fullWidth>
+          <Button
+            className="muiButton"
+            type="submit"
+            color="primary"
+            variant="contained"
+          >
+            Send
+          </Button>
+          <Button type="reset" color="secondary" variant="contained">
+            Cancel
+          </Button>
+        </ButtonGroup>
+      </form>
+    </ThemeProvider>
   );
 }
 

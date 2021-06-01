@@ -1,17 +1,28 @@
-import { Button, ButtonGroup, TextField, Typography } from "@material-ui/core";
+import {
+  Button,
+  ButtonGroup,
+  TextField,
+  ThemeProvider,
+  Typography,
+} from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import CustomerModel from "../../../Models/CustomerModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
+import darkTheme from "../../SharedArea/CreateMuiTheme";
 import "./DeleteCustomer.css";
 
 function DeleteCustomer(): JSX.Element {
-  const { register, handleSubmit } = useForm<CustomerModel>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CustomerModel>();
 
   async function send(customer: CustomerModel) {
     try {
-      const response = await jwtAxios.delete(
+      await jwtAxios.delete(
         globals.urls.adminDelete + "customer/" + customer.id
       );
       notify.success("customer with id: " + customer.id + " has been deleted.");
@@ -22,27 +33,35 @@ function DeleteCustomer(): JSX.Element {
 
   return (
     <form className="DeleteCustomer Box" onSubmit={handleSubmit(send)}>
-      <Typography variant="h2" className="Headline">
-        Delete a Customer
-      </Typography>
+      <ThemeProvider theme={darkTheme}>
+        <Typography variant="h2" className="Headline">
+          Delete a Customer
+        </Typography>
 
-      <TextField
-        {...register("id")}
-        label="Customer ID"
-        variant="outlined"
-        fullWidth
-      />
-      <br />
-      <br />
+        <TextField
+          {...register("id", {
+            min: { value: 0, message: "Customer ID must be a positive number" },
+          })}
+          label="Customer ID"
+          variant="filled"
+          fullWidth
+          type="number"
+          required
+        />
+        {errors.id && <span className="ErrorMessage">{errors.id.message}</span>}
 
-      <ButtonGroup variant="text" fullWidth>
-        <Button type="submit" color="primary">
-          Send
-        </Button>
-        <Button type="reset" color="secondary">
-          Cancel
-        </Button>
-      </ButtonGroup>
+        <br />
+        <br />
+
+        <ButtonGroup variant="text" fullWidth>
+          <Button type="submit" color="primary" variant="contained">
+            Send
+          </Button>
+          <Button type="reset" color="secondary" variant="contained">
+            Clear
+          </Button>
+        </ButtonGroup>
+      </ThemeProvider>
     </form>
   );
 }

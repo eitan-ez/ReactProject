@@ -1,20 +1,23 @@
 import {
   Button,
   ButtonGroup,
-  InputLabel,
   TextField,
+  ThemeProvider,
   Typography,
 } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import CompanyModel from "../../../Models/CompanyModel";
-import store from "../../../Redux/Store";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
-import "./AddCompany.css";
+import darkTheme from "../../SharedArea/CreateMuiTheme";
 
 function AddCompany(): JSX.Element {
-  const { register, handleSubmit } = useForm<CompanyModel>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CompanyModel>();
 
   async function send(company: CompanyModel) {
     try {
@@ -31,44 +34,74 @@ function AddCompany(): JSX.Element {
   }
 
   return (
-    <form className="AddCompany Box" onSubmit={handleSubmit(send)}>
-      <Typography variant="h2" className="Headline" color="textPrimary">
-        Add a Company
-      </Typography>
+    <form className="Box" onSubmit={handleSubmit(send)}>
+      <ThemeProvider theme={darkTheme}>
+        <Typography variant="h2" className="Headline">
+          Add a Company
+        </Typography>
 
-      <TextField
-        className="button"
-        {...register("name")}
-        label="Name"
-        variant="standard"
-        fullWidth
-      />
+        <TextField
+          {...register("name", {
+            minLength: {
+              value: 3,
+              message: "Name must be at least 3 letters.",
+            },
+          })}
+          label="Name"
+          variant="standard"
+          required
+          fullWidth
+        />
+        {errors.name && (
+          <span className="ErrorMessage">{errors.name.message}</span>
+        )}
 
-      <TextField
-        className="button"
-        {...register("email")}
-        label="Email"
-        variant="standard"
-        fullWidth
-      />
+        <TextField
+          {...register("email", {
+            minLength: {
+              value: 3,
+              message: "Email must be at least 3 letters.",
+            },
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "This field must be an Email",
+            },
+          })}
+          label="Email"
+          variant="standard"
+          required
+          fullWidth
+        />
+        {errors.email && (
+          <span className="ErrorMessage">{errors.email.message}</span>
+        )}
 
-      <TextField
-        className="button"
-        {...register("password")}
-        label="Password"
-        variant="standard"
-        type="password"
-        fullWidth
-      />
+        <TextField
+          {...register("password", {
+            minLength: {
+              value: 3,
+              message: "Email must be at least 3 letters.",
+            },
+          })}
+          label="Password"
+          variant="standard"
+          type="password"
+          required
+          fullWidth
+        />
+        {errors.password && (
+          <span className="ErrorMessage">{errors.password.message}</span>
+        )}
 
-      <ButtonGroup variant="text" fullWidth>
-        <Button type="submit" color="primary" variant="outlined">
-          Send
-        </Button>
-        <Button type="reset" color="secondary" variant="outlined">
-          Clear
-        </Button>
-      </ButtonGroup>
+        <ButtonGroup variant="text" fullWidth>
+          <Button type="submit" color="primary">
+            Send
+          </Button>
+          <Button type="reset" color="secondary">
+            Clear
+          </Button>
+        </ButtonGroup>
+      </ThemeProvider>
     </form>
   );
 }

@@ -17,28 +17,22 @@ body,
   padding: 0 10px;
   margin: 10px;
   border-radius: 17px;
-  background-color: hsl(0, 0%, 24%);
+  background-color: rgb(61, 61, 61);
 }
 
-.Box > * {
-  color: #ffffff !important;
+
+.Headline { 
+  text-align: center;
 }
 
-/* making sure MUI looks good in dark mode */
-.MuiInputBase-input,
-.MuiOutlinedInput-input,
-.PrivateNotchedOutline-root-1,
-.MuiOutlinedInput-notchedOutline,
-.PrivateNotchedOutline-legendLabelled-3,
-.MuiFormLabel-root {
-  border-color: rgb(128, 128, 128) !important;
-  color: #ffffff !important;
+.ErrorMessage {
+  color: red;
 }
 
-.MuiButton-containedPrimary {
+/* .MuiButton-containedPrimary {
   background-color: #114a1c !important;
 }
 
 .MuiButton-containedSecondary {
   background-color: #690000 !important;
-}
+} */

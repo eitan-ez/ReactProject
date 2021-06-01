@@ -1,4 +1,4 @@
-import { Component, useEffect } from "react";
+import { Component } from "react";
 import AddCompany from "../AddCompany/AddCompany";
 import AddCustomer from "../AddCustomer/AddCustomer";
 import DeleteCompany from "../DeleteCompany/DeleteCompany";

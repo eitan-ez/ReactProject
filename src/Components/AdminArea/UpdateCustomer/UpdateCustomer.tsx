@@ -1,14 +1,17 @@
 import { Button, ButtonGroup, TextField, Typography } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import CustomerModel from "../../../Models/CustomerModel";
-import store from "../../../Redux/Store";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
 import "./UpdateCustomer.css";
 
 function UpdateCustomer(): JSX.Element {
-  const { register, handleSubmit } = useForm<CustomerModel>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CustomerModel>();
 
   async function send(customer: CustomerModel) {
     try {
@@ -33,40 +36,84 @@ function UpdateCustomer(): JSX.Element {
       </Typography>
 
       <TextField
-        {...register("id")}
-        label="Customer ID"
-        variant="outlined"
+        {...register("id", {
+          min: { value: 0, message: "Customer ID must be a positive number" },
+        })}
+        label="Company ID"
+        type="number"
         fullWidth
+        required
       />
+      {errors.id && <span className="ErrorMessage">{errors.id.message}</span>}
 
       <TextField
-        {...register("firstName")}
+        {...register("firstName", {
+          minLength: {
+            value: 3,
+            message: "First Name must be at least 3 letters.",
+          },
+        })}
         label="First Name"
-        variant="outlined"
+        variant="standard"
+        required
         fullWidth
       />
+      {errors.firstName && (
+        <span className="ErrorMessage">{errors.firstName.message}</span>
+      )}
 
       <TextField
-        {...register("lastName")}
-        label="First Name"
-        variant="outlined"
+        {...register("lastName", {
+          minLength: {
+            value: 3,
+            message: "Last Name must be at least 3 letters.",
+          },
+        })}
+        label="Last Name"
+        variant="standard"
+        required
         fullWidth
       />
+      {errors.lastName && (
+        <span className="ErrorMessage">{errors.lastName.message}</span>
+      )}
 
       <TextField
-        {...register("email")}
+        {...register("email", {
+          minLength: {
+            value: 3,
+            message: "Email must be at least 3 letters.",
+          },
+          pattern: {
+            value: /\S+@\S+\.\S+/,
+            message: "This field must be an Email",
+          },
+        })}
         label="Email"
-        variant="outlined"
+        variant="standard"
+        required
         fullWidth
       />
+      {errors.email && (
+        <span className="ErrorMessage">{errors.email.message}</span>
+      )}
 
       <TextField
-        {...register("password")}
+        {...register("password", {
+          minLength: {
+            value: 3,
+            message: "Email must be at least 3 letters.",
+          },
+        })}
         label="Password"
-        variant="outlined"
+        variant="standard"
         type="password"
+        required
         fullWidth
       />
+      {errors.password && (
+        <span className="ErrorMessage">{errors.password.message}</span>
+      )}
 
       <ButtonGroup variant="text" fullWidth>
         <Button type="submit" color="primary">

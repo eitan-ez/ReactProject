@@ -3,8 +3,6 @@ import AdminMenu from "../../AdminArea/AdminMenu/AdminMenu";
 import Main from "../Home/Main"
 import CompanyMenu from "../../CompanyArea/AddCoupon/CompanyMenu/CompanyMenu";
 import CustomerMenu from "../../CustomerArea/CustomerMenu/CustomerMenu";
-import AddCompany from "../../AdminArea/AddCompany/AddCompany";
-import store from "../../../Redux/Store";
 import Logout from "../AuthArea/Logout/Logout";
 
 function Routing(): JSX.Element {
