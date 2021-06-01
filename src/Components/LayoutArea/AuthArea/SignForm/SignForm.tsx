@@ -17,7 +17,7 @@ import { loginAction } from "../../../../Redux/AuthState";
 import store from "../../../../Redux/Store";
 import globals from "../../../../Services/Globals";
 import notify from "../../../../Services/Notification";
-import darkTheme from "../../../SharedArea/CreateMuiTheme";
+import darkTheme from "../../../SharedArea/CreateMuiTheme/CreateMuiTheme";
 import "./SignForm.css";
 
 function SignForm(): JSX.Element {

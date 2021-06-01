@@ -13,7 +13,7 @@ import CustomerModel from "../../../Models/CustomerModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
-import darkTheme from "../../SharedArea/CreateMuiTheme";
+import darkTheme from "../../SharedArea/CreateMuiTheme/CreateMuiTheme";
 
 interface GetAllCustomersState {
   customers: CustomerModel[];

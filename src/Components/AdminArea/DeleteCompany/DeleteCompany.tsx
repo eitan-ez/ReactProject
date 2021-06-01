@@ -10,7 +10,7 @@ import CompanyModel from "../../../Models/CompanyModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
-import darkTheme from "../../SharedArea/CreateMuiTheme";
+import darkTheme from "../../SharedArea/CreateMuiTheme/CreateMuiTheme";
 import "./DeleteCompany.css";
 
 function DeleteCompany(): JSX.Element {

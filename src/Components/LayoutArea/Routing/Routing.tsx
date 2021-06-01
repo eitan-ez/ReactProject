@@ -4,6 +4,7 @@ import Main from "../Home/Main"
 import CompanyMenu from "../../CompanyArea/AddCoupon/CompanyMenu/CompanyMenu";
 import CustomerMenu from "../../CustomerArea/CustomerMenu/CustomerMenu";
 import Logout from "../AuthArea/Logout/Logout";
+import Page404 from "../../SharedArea/Page404/Page404";
 
 function Routing(): JSX.Element {
     return (
@@ -19,6 +20,9 @@ function Routing(): JSX.Element {
 
 
                 <Redirect from="/" to="/home" exact/>
+
+                <Route component={Page404} />
+
 
             </Switch>
 
