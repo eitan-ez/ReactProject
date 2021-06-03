@@ -1,8 +1,17 @@
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
 import { Component } from "react";
 import { CouponModel } from "../../../Models/CouponModel";
 
 interface CouponCardProps {
-  coupon: CouponModel;
+  coupons: CouponModel[];
 }
 
 class CouponCard extends Component<CouponCardProps> {
@@ -12,21 +21,32 @@ class CouponCard extends Component<CouponCardProps> {
 
   public render(): JSX.Element {
     return (
-      <li className="menuCard">
-        <div className="menuCard__inner">
-          <div className="menuCard__shape">
-            <div className="menuCard__trace">
-              <div className="menuCard__name">
-                <h5>{this.props.coupon.title}</h5>
-                <p>{this.props.coupon.description}</p>
-                <p>category: {this.props.coupon.category}</p>
-                <p>end date: {this.props.coupon.endDate}</p>
-                <p>Price: {this.props.coupon.price}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
+      <Paper>
+        <TableContainer>
+          <Table stickyHeader aria-label="stickyHeader">
+            <TableHead>
+              <TableCell>Title: </TableCell>
+              <TableCell>Description: </TableCell>
+              <TableCell>Category: </TableCell>
+              <TableCell>End date: </TableCell>
+              <TableCell>Price: </TableCell>
+              <TableCell>Company name: </TableCell>
+            </TableHead>
+            <TableBody>
+              {this.props.coupons.map((coupon) => (
+                <TableRow key={coupon.id}>
+                  <TableCell>{coupon.title}</TableCell>
+                  <TableCell>{coupon.description}</TableCell>
+                  <TableCell>{coupon.category}</TableCell>
+                  <TableCell>{coupon.endDate}</TableCell>
+                  <TableCell>{coupon.price}</TableCell>
+                  <TableCell>{coupon.company.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
     );
   }
 }

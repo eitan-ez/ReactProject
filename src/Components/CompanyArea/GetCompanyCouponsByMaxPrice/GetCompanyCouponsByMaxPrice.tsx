@@ -1,4 +1,5 @@
 import { Button, TextField } from "@material-ui/core";
+import { Message } from "@material-ui/icons";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CouponModel } from "../../../Models/CouponModel";
@@ -6,7 +7,6 @@ import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
 import CouponCard from "../../SharedArea/CouponCard/CouponCard";
-import "./GetCompanyCouponsByMaxPrice.css";
 
 interface enteredPrice {
   maxPrice: number;
@@ -14,7 +14,11 @@ interface enteredPrice {
 
 function GetCompanyCouponsByMaxPrice(): JSX.Element {
   const [coupons, setCoupons] = useState<Array<CouponModel>>([]);
-  const { register, handleSubmit } = useForm<enteredPrice>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<enteredPrice>();
 
   async function send(price: enteredPrice) {
     try {
@@ -31,17 +35,34 @@ function GetCompanyCouponsByMaxPrice(): JSX.Element {
     <>
       <form onSubmit={handleSubmit(send)}>
         <TextField
-          {...register("maxPrice")}
+          {...register("maxPrice", {
+            pattern: {
+              value: /^(([1-9]*)|(([1-9]*).([0-9]*)))$/,
+              message: "Must be a valid number",
+            },
+            min: {
+              value: 0,
+              message:
+                "last time i checked, we didn't offer to pay customers (the price is negative)",
+            },
+          })}
           label="Maximum Price"
           variant="standard"
-          type="numeric"
+          type="text"
+          required
         />
+        {errors.maxPrice && (
+          <span className="ErrorMessage">
+            <br />
+            {errors.maxPrice.message}
+            <br />
+          </span>
+        )}
+
         <Button type="submit">send</Button>
       </form>
       <ul className="CompanyMenu">
-        {coupons.map((c) => (
-          <CouponCard key={c.id} coupon={c} />
-        ))}
+        <CouponCard coupons={coupons} />
       </ul>
     </>
   );

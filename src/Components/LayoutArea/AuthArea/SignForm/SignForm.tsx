@@ -107,9 +107,11 @@ function SignForm(): JSX.Element {
         )}
 
         <br />
+        <br />
 
         <InputLabel>Customer Type</InputLabel>
         <Select {...register("userType")} variant="outlined" fullWidth required>
+        <InputLabel>Customer Type</InputLabel>
           <MenuItem value={"ADMIN"}>Admin</MenuItem>
           <MenuItem value={"COMPANY"}>Company</MenuItem>
           <MenuItem value={"CUSTOMER"}>Customer</MenuItem>

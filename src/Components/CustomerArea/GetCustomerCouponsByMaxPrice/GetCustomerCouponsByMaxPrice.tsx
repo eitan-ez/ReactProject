@@ -13,7 +13,11 @@ interface enteredPrice {
 
 function GetCustomerCouponsByMaxPrice(): JSX.Element {
   const [coupons, setCoupons] = useState<Array<CouponModel>>([]);
-  const { register, handleSubmit } = useForm<enteredPrice>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<enteredPrice>();
 
   async function send(price: enteredPrice) {
     try {
@@ -30,17 +34,32 @@ function GetCustomerCouponsByMaxPrice(): JSX.Element {
     <>
       <form onSubmit={handleSubmit(send)}>
         <TextField
-          {...register("maxPrice")}
+          {...register("maxPrice", {
+            pattern: {
+              value: /^(([1-9]*)|(([1-9]*).([0-9]*)))$/,
+              message: "Must be a valid number",
+            },
+            min: {
+              value: 0,
+              message:
+                "last time i checked, we didn't offer to pay customers (the price is negative)",
+            },
+          })}
           label="Maximum Price"
           variant="standard"
-          type="numeric"
+          type="text"
+          required
         />
-        <Button type="submit">send</Button>
+        {errors.maxPrice && (
+          <span className="ErrorMessage">
+            <br />
+            {errors.maxPrice.message}
+            <br />
+          </span>
+        )}
       </form>
       <ul className="CustomerMenu">
-        {coupons.map((c) => (
-          <CouponCard key={c.id} coupon={c} />
-        ))}
+        <CouponCard coupons={coupons} />
       </ul>
     </>
   );

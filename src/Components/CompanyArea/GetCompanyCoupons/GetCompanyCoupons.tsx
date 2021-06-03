@@ -32,9 +32,7 @@ class GetCompanyCoupons extends Component<{}, GetCompanyCouponsState> {
   public render(): JSX.Element {
     return (
       <div className="GetCompanyCoupons">
-        {this.state.coupons.map((coupon) => (
-          <CouponCard key={coupon.id} coupon={coupon} />
-        ))}
+        <CouponCard coupons={this.state.coupons} />
       </div>
     );
   }

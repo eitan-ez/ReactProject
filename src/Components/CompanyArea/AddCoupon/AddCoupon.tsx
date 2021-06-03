@@ -1,6 +1,7 @@
 import {
   Button,
   ButtonGroup,
+  InputLabel,
   MenuItem,
   Select,
   TextField,
@@ -14,7 +15,11 @@ import notify from "../../../Services/Notification";
 import "./AddCoupon.css";
 
 function AddCoupon(): JSX.Element {
-  const { register, handleSubmit } = useForm<CouponModel>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CouponModel>();
 
   async function send(coupon: CouponModel) {
     try {
@@ -31,27 +36,57 @@ function AddCoupon(): JSX.Element {
       <Typography variant="h2" className="Headline" color="textPrimary">
         Add new Coupon
       </Typography>
-
       <TextField
-        {...register("title")}
+        {...register("title", {
+          minLength: {
+            value: 5,
+            message: "Title must be at least 5 letters.",
+          },
+        })}
         label="Title"
         variant="standard"
         type="text"
+        required
       />
-
+      {errors.title && (
+        <span className="ErrorMessage">{errors.title.message}</span>
+      )}
       <TextField
-        {...register("amount")}
+        {...register("amount", {
+          min: {
+            value: 1,
+            message:
+              "As my teacher user to say: there can't be a negative number of apples ",
+          },
+        })}
         label="Amount"
         variant="standard"
         type="number"
+        required
       />
+      {errors.amount && (
+        <span className="ErrorMessage">{errors.amount.message}</span>
+      )}
 
       <TextField
-        {...register("price")}
+        {...register("price", {
+          pattern: {
+            value: /^(([1-9]*)|(([1-9]*).([0-9]*)))$/,
+            message: "Must be a valid number",
+          },
+          min: {
+            value: 1,
+            message: "price must be a positive number ",
+          },
+        })}
         label="Price"
         variant="standard"
-        type="numeric"
+        type="text"
+        required
       />
+      {errors.price && (
+        <span className="ErrorMessage">{errors.price.message}</span>
+      )}
 
       <TextField
         {...register("description")}
@@ -59,8 +94,6 @@ function AddCoupon(): JSX.Element {
         variant="standard"
       />
 
-      <br />
-      <br />
       <TextField
         {...register("startDate")}
         label="Set Start Date"
@@ -68,6 +101,7 @@ function AddCoupon(): JSX.Element {
         InputLabelProps={{
           shrink: true,
         }}
+        required
       />
 
       <TextField
@@ -77,9 +111,21 @@ function AddCoupon(): JSX.Element {
         InputLabelProps={{
           shrink: true,
         }}
+        required
       />
-      <br/>
-      <Select {...register("category")} className="select">
+      {errors.endDate && (
+        <span className="ErrorMessage">
+          End date Must be in the future (sadly our time machine is out of
+          order, come check again in the past)
+        </span>
+      )}
+
+      <InputLabel>
+        <br />
+        Category:
+      </InputLabel>
+      <Select {...register("category")} className="select" required>
+        <InputLabel>Category</InputLabel>
         <MenuItem value="FOOD">Food</MenuItem>
         <MenuItem value="ELECTRICITY">Electricity</MenuItem>
         <MenuItem value="RESTAURANT">Restaurant</MenuItem>
@@ -87,10 +133,6 @@ function AddCoupon(): JSX.Element {
         <MenuItem value="GARMENT">Garment</MenuItem>
         <MenuItem value="BOOK">Book</MenuItem>
       </Select>
-      <br />
-      <br />
-      <br />
-
       <ButtonGroup variant="text" fullWidth>
         <Button type="submit" color="primary">
           Send

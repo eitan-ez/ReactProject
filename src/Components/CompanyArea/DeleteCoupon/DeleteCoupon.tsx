@@ -30,6 +30,8 @@ function DeleteCoupon(): JSX.Element {
         {...register("id")}
         label="Coupon ID"
         variant="outlined"
+        type="number"
+        required
         fullWidth
       />
       <br />

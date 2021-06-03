@@ -6,37 +6,35 @@ import notify from "../../../Services/Notification";
 import CouponCard from "../../SharedArea/CouponCard/CouponCard";
 
 interface GetCustomerCouponsState {
-	coupons: CouponModel[];
+  coupons: CouponModel[];
 }
 
 class GetCustomerCoupons extends Component<{}, GetCustomerCouponsState> {
+  public constructor(props: {}) {
+    super(props);
+    this.state = {
+      coupons: [],
+    };
+  }
 
-    public constructor(props: {}) {
-        super(props);
-        this.state = {
-			coupons: []
-        };
+  public async componentDidMount() {
+    try {
+      const response = await jwtAxios.get<CouponModel[]>(
+        globals.urls.customer + "all-coupons"
+      );
+      this.setState({ coupons: response.data });
+    } catch (err) {
+      notify.error(err);
     }
+  }
 
-    public async componentDidMount() {
-                try {
-            const response = await jwtAxios.get<CouponModel[]>(globals.urls.customer + "all-coupons");
-            this.setState({ coupons: response.data });
-        }
-        catch (err) {
-            notify.error(err);
-        }
-
-    }
-
-    public render(): JSX.Element {
-        return (
-        
-            <ul className="CustomerMenu">
-				{this.state.coupons.map((coupon) => <CouponCard key={coupon.id} coupon={coupon}/>)}
-            </ul>
-        );
-    }
+  public render(): JSX.Element {
+    return (
+      <ul className="CustomerMenu">
+        <CouponCard coupons={this.state.coupons} />)
+      </ul>
+    );
+  }
 }
 
 export default GetCustomerCoupons;

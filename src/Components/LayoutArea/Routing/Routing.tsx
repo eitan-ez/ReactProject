@@ -1,7 +1,7 @@
 import {Redirect, Route, Switch} from "react-router";
 import AdminMenu from "../../AdminArea/AdminMenu/AdminMenu";
 import Main from "../Home/Main"
-import CompanyMenu from "../../CompanyArea/AddCoupon/CompanyMenu/CompanyMenu";
+import CompanyMenu from "../../CompanyArea/CompanyMenu/CompanyMenu";
 import CustomerMenu from "../../CustomerArea/CustomerMenu/CustomerMenu";
 import Logout from "../AuthArea/Logout/Logout";
 import Page404 from "../../SharedArea/Page404/Page404";

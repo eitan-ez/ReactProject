@@ -1,3 +1,8 @@
 .GetCompanyDetails {
-	
+	width:100%;
+}
+.GetCompanyDetails > div {
+    font-size: x-large;
+    font-style: bold;
+    line-height: 2.5;
 }

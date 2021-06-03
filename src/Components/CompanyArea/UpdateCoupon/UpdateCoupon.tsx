@@ -1,4 +1,12 @@
-import { Button, ButtonGroup, MenuItem, Select, TextField, Typography } from "@material-ui/core";
+import {
+  Button,
+  ButtonGroup,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { CouponModel } from "../../../Models/CouponModel";
 import globals from "../../../Services/Globals";
@@ -7,12 +15,16 @@ import notify from "../../../Services/Notification";
 import "./UpdateCoupon.css";
 
 function UpdateCoupon(): JSX.Element {
-  const { register, handleSubmit } = useForm<CouponModel>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CouponModel>();
 
   async function send(coupon: CouponModel) {
     try {
-      await jwtAxios.post<CouponModel>(globals.urls.company + "update", coupon);
-      notify.success("coupon has been added.");
+      await jwtAxios.put<CouponModel>(globals.urls.company + "update", coupon);
+      notify.success("coupon has been updated successfully.");
     } catch (err) {
       notify.error(err);
     }
@@ -21,38 +33,71 @@ function UpdateCoupon(): JSX.Element {
   return (
     <form className="UpdateCoupon Box" onSubmit={handleSubmit(send)}>
       <Typography variant="h2" className="Headline" color="textPrimary">
-        Add new Coupon
+        Update Existing Coupon
       </Typography>
-
       <TextField
-        {...register("title")}
+        {...register("id", {
+          min: { value: 0, message: "Company ID must be a positive number" },
+        })}
+        label="Company ID"
+        type="number"
+        required
+      />
+      {errors.id && <span className="ErrorMessage">{errors.id.message}</span>}
+      <TextField
+        {...register("title", {
+          minLength: {
+            value: 5,
+            message: "Title must be at least 5 letters.",
+          },
+        })}
         label="Title"
         variant="standard"
         type="text"
+        required
       />
+      {errors.title && (
+        <span className="ErrorMessage">{errors.title.message}</span>
+      )}
 
       <TextField
-        {...register("amount")}
+        {...register("amount", {
+          min: {
+            value: 1,
+            message:
+              "As my teacher user to say: there can't be a negative number of apples ",
+          },
+        })}
         label="Amount"
         variant="standard"
         type="number"
+        required
       />
+      {errors.amount && (
+        <span className="ErrorMessage">{errors.amount.message}</span>
+      )}
 
       <TextField
-        {...register("price")}
+        {...register("price", {
+          min: {
+            value: 1,
+            message: "price must be a positive number ",
+          },
+        })}
         label="Price"
         variant="standard"
-        type="numeric"
+        type="text"
+        required
       />
+      {errors.price && (
+        <span className="ErrorMessage">{errors.price.message}</span>
+      )}
 
       <TextField
         {...register("description")}
         label="Description"
         variant="standard"
       />
-
-      <br />
-      <br />
       <TextField
         {...register("startDate")}
         label="Set Start Date"
@@ -60,6 +105,7 @@ function UpdateCoupon(): JSX.Element {
         InputLabelProps={{
           shrink: true,
         }}
+        required
       />
 
       <TextField
@@ -69,9 +115,14 @@ function UpdateCoupon(): JSX.Element {
         InputLabelProps={{
           shrink: true,
         }}
+        required
       />
-      <br />
-      <Select {...register("category")} className="select">
+      <InputLabel>
+        <br />
+        Category:
+      </InputLabel>
+      <Select {...register("category")} className="select" required>
+        <InputLabel>Category</InputLabel>
         <MenuItem value="FOOD">Food</MenuItem>
         <MenuItem value="ELECTRICITY">Electricity</MenuItem>
         <MenuItem value="RESTAURANT">Restaurant</MenuItem>
@@ -82,7 +133,6 @@ function UpdateCoupon(): JSX.Element {
       <br />
       <br />
       <br />
-
       <ButtonGroup variant="text" fullWidth>
         <Button type="submit" color="primary">
           Send

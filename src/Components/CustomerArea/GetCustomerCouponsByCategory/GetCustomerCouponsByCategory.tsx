@@ -30,7 +30,9 @@ class GetCustomerCouponsByCategory extends Component<
           onChange={async (selectItem) => {
             try {
               const response = await jwtAxios.get<CouponModel[]>(
-                globals.urls.customer + "coupons-by-category/" + selectItem.target.value
+                globals.urls.customer +
+                  "coupons-by-category/" +
+                  selectItem.target.value
               );
               this.setState({ coupons: response.data });
             } catch (err) {
@@ -47,9 +49,7 @@ class GetCustomerCouponsByCategory extends Component<
         </Select>
 
         <ul className="CustomerMenu">
-          {this.state.coupons.map((coupon) => (
-            <CouponCard key={coupon.id} coupon={coupon} />
-          ))}
+          <CouponCard coupons={this.state.coupons} />
         </ul>
       </>
     );

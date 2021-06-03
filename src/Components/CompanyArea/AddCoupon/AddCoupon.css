@@ -1,5 +1,9 @@
 .AddCoupon {
-	width: 400px;
+	border: 5px solid rgb(28, 98, 0);
+	display: grid;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .select {

@@ -53,7 +53,7 @@ class AdminMenu extends Component<AdminMenuProps> {
             <MethodCard
               name="Update Company"
               description="Update existing company"
-              sign="?"
+              sign="&#8607;"
             >
               <UpdateCompany />
             </MethodCard>
@@ -102,7 +102,7 @@ class AdminMenu extends Component<AdminMenuProps> {
             <MethodCard
               name="Update Customer"
               description="Update existing customer"
-              sign="?"
+              sign="&#8607;"
             >
               <UpdateCustomer />
             </MethodCard>
