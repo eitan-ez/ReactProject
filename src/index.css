@@ -19,11 +19,6 @@ body,
   background-color: rgb(61, 61, 61);
 }
 
-
-.Headline { 
-  text-align: center;
-}
-
 .ErrorMessage {
   color: red;
 }

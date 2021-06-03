@@ -36,7 +36,7 @@ function AddCompany(): JSX.Element {
   return (
     <form className="Box" onSubmit={handleSubmit(send)}>
       <ThemeProvider theme={darkTheme}>
-        <Typography variant="h2" className="Headline">
+        <Typography align="center" variant="h2" >
           Add a Company
         </Typography>
 

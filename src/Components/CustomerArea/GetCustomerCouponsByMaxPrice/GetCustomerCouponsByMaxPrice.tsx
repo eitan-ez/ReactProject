@@ -13,6 +13,9 @@ interface enteredPrice {
 
 function GetCustomerCouponsByMaxPrice(): JSX.Element {
   const [coupons, setCoupons] = useState<Array<CouponModel>>([]);
+  const [couponsReplacement, setCouponsReplacement] = useState(
+    "no price is chosen yet."
+  );
   const {
     register,
     handleSubmit,
@@ -24,6 +27,12 @@ function GetCustomerCouponsByMaxPrice(): JSX.Element {
       const response = await jwtAxios.get<CouponModel[]>(
         globals.urls.customer + "coupons-by-price/" + price.maxPrice
       );
+      // let the user know he has no coupons in the category
+      if (response.data.length === 0) {
+        setCouponsReplacement("You have no coupons under this price");
+      } else {
+        setCouponsReplacement("");
+      }
       setCoupons(response.data);
     } catch (err) {
       notify.error(err);
@@ -36,7 +45,7 @@ function GetCustomerCouponsByMaxPrice(): JSX.Element {
         <TextField
           {...register("maxPrice", {
             pattern: {
-              value: /^(([1-9]*)|(([1-9]*).([0-9]*)))$/,
+              value: /^\d*\.?\d*$/,
               message: "Must be a valid number",
             },
             min: {
@@ -57,9 +66,11 @@ function GetCustomerCouponsByMaxPrice(): JSX.Element {
             <br />
           </span>
         )}
+        <Button type="submit">send</Button>
       </form>
       <ul className="CustomerMenu">
         <CouponCard coupons={coupons} />
+        {couponsReplacement}
       </ul>
     </>
   );

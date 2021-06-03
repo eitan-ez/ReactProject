@@ -65,7 +65,7 @@ function SignForm(): JSX.Element {
   return (
     <ThemeProvider theme={darkTheme}>
       <form className="SignForm Box" onSubmit={handleSubmit(send)}>
-        <Typography variant="h2" className="Headline">
+        <Typography align="center" variant="h2" >
           Sign in
         </Typography>
 

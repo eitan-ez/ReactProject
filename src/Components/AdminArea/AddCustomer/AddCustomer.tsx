@@ -28,7 +28,7 @@ function AddCustomer(): JSX.Element {
       );
       const addedCustomer = response.data;
 
-      notify.success("customer has been added id: " + addedCustomer.id);
+      notify.success("customer has been added successfully");
     } catch (err) {
       notify.error(err);
     }
@@ -37,7 +37,7 @@ function AddCustomer(): JSX.Element {
   return (
     <form className="AddCustomer Box" onSubmit={handleSubmit(send)}>
       <ThemeProvider theme={darkTheme}>
-        <Typography variant="h2" className="Headline">
+        <Typography align="center" variant="h2" >
           Add a customer
         </Typography>
 

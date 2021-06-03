@@ -34,7 +34,7 @@ function DeleteCompany(): JSX.Element {
   return (
     <ThemeProvider theme={darkTheme}>
       <form className="DeleteCompany Box" onSubmit={handleSubmit(send)}>
-        <Typography variant="h2" className="Headline">
+        <Typography align="center" variant="h2" >
           Delete a Company
         </Typography>
 

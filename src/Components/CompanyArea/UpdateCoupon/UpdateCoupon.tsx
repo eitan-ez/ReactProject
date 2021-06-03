@@ -32,7 +32,7 @@ function UpdateCoupon(): JSX.Element {
 
   return (
     <form className="UpdateCoupon Box" onSubmit={handleSubmit(send)}>
-      <Typography variant="h2" className="Headline" color="textPrimary">
+      <Typography align="center" variant="h2"  color="textPrimary">
         Update Existing Coupon
       </Typography>
       <TextField

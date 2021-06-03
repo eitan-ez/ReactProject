@@ -37,7 +37,7 @@ function GetCompanyCouponsByMaxPrice(): JSX.Element {
         <TextField
           {...register("maxPrice", {
             pattern: {
-              value: /^(([1-9]*)|(([1-9]*).([0-9]*)))$/,
+              value: /^\D*\.?\D*$/,
               message: "Must be a valid number",
             },
             min: {

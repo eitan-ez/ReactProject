@@ -34,7 +34,7 @@ function DeleteCustomer(): JSX.Element {
   return (
     <form className="DeleteCustomer Box" onSubmit={handleSubmit(send)}>
       <ThemeProvider theme={darkTheme}>
-        <Typography variant="h2" className="Headline">
+        <Typography align="center" variant="h2" >
           Delete a Customer
         </Typography>
 

@@ -38,7 +38,7 @@ function GetOneCustomer(): JSX.Element {
           }
         })}
       >
-        <Typography variant="h2" className="Headline">
+        <Typography align="center" variant="h2" >
           Get Customer Details
         </Typography>
 

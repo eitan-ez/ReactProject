@@ -33,7 +33,7 @@ function AddCoupon(): JSX.Element {
 
   return (
     <form className="AddCoupon Box" onSubmit={handleSubmit(send)}>
-      <Typography variant="h2" className="Headline" color="textPrimary">
+      <Typography align="center" variant="h2"  color="textPrimary">
         Add new Coupon
       </Typography>
       <TextField
@@ -71,7 +71,7 @@ function AddCoupon(): JSX.Element {
       <TextField
         {...register("price", {
           pattern: {
-            value: /^(([1-9]*)|(([1-9]*).([0-9]*)))$/,
+            value: /^\D*\.?\D*$/,
             message: "Must be a valid number",
           },
           min: {

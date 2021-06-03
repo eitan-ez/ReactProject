@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { Component } from "react";
 import { CouponModel } from "../../../Models/CouponModel";
+import "./CouponCard.scss"
 
 interface CouponCardProps {
   coupons: CouponModel[];
@@ -30,11 +31,11 @@ class CouponCard extends Component<CouponCardProps> {
               <TableCell>Category: </TableCell>
               <TableCell>End date: </TableCell>
               <TableCell>Price: </TableCell>
-              <TableCell>Company name: </TableCell>
+              <TableCell>Company Name: </TableCell>
             </TableHead>
             <TableBody>
               {this.props.coupons.map((coupon) => (
-                <TableRow key={coupon.id}>
+                <TableRow className="CouponCard" key={coupon.id}>
                   <TableCell>{coupon.title}</TableCell>
                   <TableCell>{coupon.description}</TableCell>
                   <TableCell>{coupon.category}</TableCell>

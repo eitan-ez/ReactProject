@@ -25,7 +25,7 @@ class GetCompanyCouponsByCategory extends Component<
   public render(): JSX.Element {
     return (
       <>
-      <Typography variant="h5">Category to Show:</Typography>
+      <Typography align="center" variant="h5">Category to Show:</Typography>
         <Select
           variant="filled"
           fullWidth

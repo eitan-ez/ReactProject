@@ -5,15 +5,15 @@ import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
 import "./PurchaseCoupon.css";
 
-interface FormToSend{
-    couponId: number;
+interface FormToSend {
+  couponId: number;
 }
 
 function PurchaseCoupon(): JSX.Element {
   const { register, handleSubmit } = useForm<FormToSend>();
   async function send(couponId: FormToSend) {
     try {
-      const response = await jwtAxios.put(
+      await jwtAxios.put(
         globals.urls.customerPurchase + "/" + couponId.couponId
       );
       notify.success("you have been successfully bought the coupon");
@@ -29,9 +29,11 @@ function PurchaseCoupon(): JSX.Element {
         {...register("couponId")}
         label="Coupon ID"
         variant="filled"
+        type="number"
+        required
         fullWidth
       />
-      
+
       <ButtonGroup variant="text" fullWidth>
         <Button type="submit" color="primary" variant="outlined">
           Send

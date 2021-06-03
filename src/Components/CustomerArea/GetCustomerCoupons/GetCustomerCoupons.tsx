@@ -31,7 +31,7 @@ class GetCustomerCoupons extends Component<{}, GetCustomerCouponsState> {
   public render(): JSX.Element {
     return (
       <ul className="CustomerMenu">
-        <CouponCard coupons={this.state.coupons} />)
+        <CouponCard coupons={this.state.coupons} />
       </ul>
     );
   }

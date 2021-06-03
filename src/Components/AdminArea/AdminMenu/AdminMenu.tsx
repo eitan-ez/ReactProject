@@ -34,8 +34,8 @@ class AdminMenu extends Component<AdminMenuProps> {
   public render(): JSX.Element {
     return (
       <>
-        <Typography variant="h1">Admin Methods Menu</Typography>
-        <Typography variant="h5">
+        <Typography align="center" variant="h1">Admin Methods Menu</Typography>
+        <Typography align="center" variant="h5">
           Choose a method and click on it (magic will happen)
         </Typography>
         <ul className="AdminMenu">

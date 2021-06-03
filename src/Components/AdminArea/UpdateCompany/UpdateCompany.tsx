@@ -41,7 +41,7 @@ function UpdateCompany(): JSX.Element {
   return (
     <ThemeProvider theme={darkTheme}>
       <form className="UpdateCompany Box" onSubmit={handleSubmit(send)}>
-        <Typography variant="h3" className="Headline">
+        <Typography align="center" variant="h3" >
           Update Existing Company
         </Typography>
 

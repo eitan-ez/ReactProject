@@ -38,7 +38,7 @@ function GetOneCompany(): JSX.Element {
           }
         })}
       >
-        <Typography variant="h2" className="Headline">
+        <Typography align="center" variant="h2" >
           Get Company Details
         </Typography>
 
