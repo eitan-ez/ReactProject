@@ -1,5 +1,4 @@
 import { Button, TextField } from "@material-ui/core";
-import { Message } from "@material-ui/icons";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CouponModel } from "../../../Models/CouponModel";
@@ -14,6 +13,9 @@ interface enteredPrice {
 
 function GetCompanyCouponsByMaxPrice(): JSX.Element {
   const [coupons, setCoupons] = useState<Array<CouponModel>>([]);
+  const [couponsReplacement, setCouponsReplacement] = useState(
+    "no price is chosen yet."
+  );
   const {
     register,
     handleSubmit,
@@ -25,6 +27,13 @@ function GetCompanyCouponsByMaxPrice(): JSX.Element {
       const response = await jwtAxios.get<CouponModel[]>(
         globals.urls.company + "get-coupons-by-price/" + price.maxPrice
       );
+      // let the user know he has no coupons in the category
+      if (response.data.length === 0) {
+        setCouponsReplacement("You have no coupons under this price");
+      } else {
+        setCouponsReplacement("");
+      }
+
       setCoupons(response.data);
     } catch (err) {
       notify.error(err);
@@ -37,7 +46,7 @@ function GetCompanyCouponsByMaxPrice(): JSX.Element {
         <TextField
           {...register("maxPrice", {
             pattern: {
-              value: /^\D*\.?\D*$/,
+              value: /^\d*\.?\d*$/,
               message: "Must be a valid number",
             },
             min: {
@@ -63,6 +72,7 @@ function GetCompanyCouponsByMaxPrice(): JSX.Element {
       </form>
       <ul className="CompanyMenu">
         <CouponCard coupons={coupons} />
+        {couponsReplacement}
       </ul>
     </>
   );

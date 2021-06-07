@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
-import "./PurchaseCoupon.css";
 
 interface FormToSend {
   couponId: number;
@@ -16,7 +15,7 @@ function PurchaseCoupon(): JSX.Element {
       await jwtAxios.put(
         globals.urls.customerPurchase + "/" + couponId.couponId
       );
-      notify.success("you have been successfully bought the coupon");
+      notify.success("you bought the coupon successfully");
     } catch (err) {
       notify.error(err);
     }

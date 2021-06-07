@@ -26,13 +26,12 @@ class GetAllCustomers extends Component<{}, GetAllCustomersState> {
       customers: [],
     };
   }
-
+    
   public async componentDidMount() {
     try {
       const response = await jwtAxios.get<CustomerModel[]>(
         globals.urls.adminGet + "all-customers"
       );
-      console.log(response.data);
       this.setState({ customers: response.data });
     } catch (err) {
       notify.error(err);

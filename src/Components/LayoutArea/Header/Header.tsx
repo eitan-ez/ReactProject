@@ -6,7 +6,7 @@ function Header(): JSX.Element {
         <div className="Header">
             <AuthMenu />
 			<h1>
-                פרויקט קופונים דווקא די מגניב
+                My Coupons Project
             </h1>
         </div>
     );

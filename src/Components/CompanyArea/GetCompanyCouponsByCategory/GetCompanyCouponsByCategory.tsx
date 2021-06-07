@@ -5,10 +5,10 @@ import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
 import CouponCard from "../../SharedArea/CouponCard/CouponCard";
-import "./GetCompanyCouponsByCategory.css";
 
 interface GetCompanyCouponsByCategoryState {
   coupons: CouponModel[];
+  couponsReplacement: string;
 }
 
 class GetCompanyCouponsByCategory extends Component<
@@ -19,13 +19,16 @@ class GetCompanyCouponsByCategory extends Component<
     super(props);
     this.state = {
       coupons: [],
+      couponsReplacement: "no category is chosen yet. who is your chosen one?",
     };
   }
 
   public render(): JSX.Element {
     return (
       <>
-      <Typography align="center" variant="h5">Category to Show:</Typography>
+        <Typography align="center" variant="h5">
+          Category to Show:
+        </Typography>
         <Select
           variant="filled"
           fullWidth
@@ -33,15 +36,23 @@ class GetCompanyCouponsByCategory extends Component<
             try {
               const response = await jwtAxios.get<CouponModel[]>(
                 globals.urls.companyGet +
-                "coupons-by-category/" +
-                selectItem.target.value
-                );
-                this.setState({ coupons: response.data });
-              } catch (err) {
-                notify.error(err);
+                  "coupons-by-category/" +
+                  selectItem.target.value
+              );
+              // let the user know he has no coupons in the category
+              if (response.data.length === 0) {
+                this.setState({
+                  couponsReplacement: "You have no coupons in this category",
+                });
+              } else {
+                this.setState({ couponsReplacement: "" });
               }
-            }}
-            >
+              this.setState({ coupons: response.data });
+            } catch (err) {
+              notify.error(err);
+            }
+          }}
+        >
           <InputLabel>Category</InputLabel>
           <MenuItem value="FOOD">Food</MenuItem>
           <MenuItem value="ELECTRICITY">Electricity</MenuItem>
@@ -53,6 +64,7 @@ class GetCompanyCouponsByCategory extends Component<
 
         <ul className="CompanyMenu">
           <CouponCard coupons={this.state.coupons} />
+          {this.state.couponsReplacement}
         </ul>
       </>
     );

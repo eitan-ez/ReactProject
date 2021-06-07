@@ -11,7 +11,7 @@ const darkTheme = createMuiTheme({
         secondary: {
           main: red[800],
         },
-      }
+      },
 });
 
 export default darkTheme;

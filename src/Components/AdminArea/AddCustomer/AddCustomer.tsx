@@ -22,11 +22,10 @@ function AddCustomer(): JSX.Element {
 
   async function send(customer: CustomerModel) {
     try {
-      const response = await jwtAxios.post<CustomerModel>(
+      await jwtAxios.post<CustomerModel>(
         globals.urls.adminAdd + "customer",
         customer
       );
-      const addedCustomer = response.data;
 
       notify.success("customer has been added successfully");
     } catch (err) {
@@ -37,7 +36,7 @@ function AddCustomer(): JSX.Element {
   return (
     <form className="AddCustomer Box" onSubmit={handleSubmit(send)}>
       <ThemeProvider theme={darkTheme}>
-        <Typography align="center" variant="h2" >
+        <Typography align="center" variant="h2">
           Add a customer
         </Typography>
 

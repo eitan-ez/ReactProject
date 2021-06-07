@@ -4,7 +4,6 @@ import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
 import CouponCard from "../../SharedArea/CouponCard/CouponCard";
-import "./GetCompanyCoupons.css";
 
 interface GetCompanyCouponsState {
   coupons: CouponModel[];

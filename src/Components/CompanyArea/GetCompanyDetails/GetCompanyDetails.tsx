@@ -1,5 +1,5 @@
 import { Typography } from "@material-ui/core";
-import { Component, useEffect, useState } from "react";
+import { Component } from "react";
 import CompanyModel from "../../../Models/CompanyModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";

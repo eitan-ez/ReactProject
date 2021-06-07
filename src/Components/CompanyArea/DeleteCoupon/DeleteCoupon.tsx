@@ -4,16 +4,13 @@ import { CouponModel } from "../../../Models/CouponModel";
 import globals from "../../../Services/Globals";
 import jwtAxios from "../../../Services/JwtAxios";
 import notify from "../../../Services/Notification";
-import "./DeleteCoupon.css";
 
 function DeleteCoupon(): JSX.Element {
   const { register, handleSubmit } = useForm<CouponModel>();
 
   async function send(coupon: CouponModel) {
     try {
-      const response = await jwtAxios.delete(
-        globals.urls.company + "delete/" + coupon.id
-      );
+      await jwtAxios.delete(globals.urls.company + "delete/" + coupon.id);
       notify.success("coupon with id: " + coupon.id + " has been deleted.");
     } catch (err) {
       notify.error(err);
@@ -22,7 +19,7 @@ function DeleteCoupon(): JSX.Element {
 
   return (
     <form className="DeleteCoupon Box" onSubmit={handleSubmit(send)}>
-      <Typography align="center" variant="h2" >
+      <Typography align="center" variant="h2">
         Delete Coupon
       </Typography>
 

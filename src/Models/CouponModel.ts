@@ -9,14 +9,14 @@ export enum CouponCategory {
 }
 
 export class CouponModel {
-id: number;
-price: number;
-company: CompanyModel
-amount: number;
-title: string;
-description: string;
-image: string;
-startDate: Date;
-endDate: Date;
-category: CouponCategory;
+    id: number;
+    price: number;
+    company: CompanyModel
+    amount: number;
+    title: string;
+    description: string;
+    image: string;
+    startDate: Date;
+    endDate: Date;
+    category: CouponCategory;
 }

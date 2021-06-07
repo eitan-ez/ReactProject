@@ -1,4 +1,3 @@
-import { AuthState } from './../Redux/AuthState';
 import axios from 'axios';
 import store from '../Redux/Store';
 

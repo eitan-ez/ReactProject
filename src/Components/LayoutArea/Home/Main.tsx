@@ -1,5 +1,4 @@
 import SignForm from "../AuthArea/SignForm/SignForm";
-import "./Main.css";
 
 function Main(): JSX.Element {
     return (

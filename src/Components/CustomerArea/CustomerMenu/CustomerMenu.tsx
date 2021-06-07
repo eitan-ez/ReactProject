@@ -1,4 +1,4 @@
-import { MenuItem, Select } from "@material-ui/core";
+import { InputLabel, MenuItem, Select, Typography } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import { Component } from "react";
 import { RouteComponentProps } from "react-router";
@@ -11,7 +11,6 @@ import GetCustomerCouponsByCategory from "../GetCustomerCouponsByCategory/GetCus
 import GetCustomerCouponsByMaxPrice from "../GetCustomerCouponsByMaxPrice/GetCustomerCouponsByMaxPrice";
 import GetCustomerDetails from "../GetCustomerDetails/GetCustomerDetails";
 import PurchaseCoupon from "../PurchaseCoupon/PurchaseCoupon";
-import "./CustomerMenu.scss";
 
 interface CustomerMenuState {
   methodToShow: string;
@@ -40,13 +39,23 @@ class CustomerMenu extends Component<CompanyMenuProps, CustomerMenuState> {
     return (
       <ThemeProvider theme={darkTheme}>
         <div className="CustomerMenu">
+          <Typography variant="h2" align="center">
+            Customer Area
+          </Typography>
+          <Typography variant="h4" align="center">
+            Choose method from the menu below
+          </Typography>
+          <br />
+          <br />
+          <InputLabel>Methods List:</InputLabel>
           <Select
             variant="filled"
             fullWidth
             onChange={(selectItem) => {
               this.setState({ methodToShow: String(selectItem.target.value) });
             }}
-          >
+            >
+            <InputLabel>Methods list</InputLabel>
             <MenuItem value="PurchaseCoupon">Purchase Coupon</MenuItem>
             <MenuItem value="GetCustomerCoupons">All your Coupons</MenuItem>
             <MenuItem value="GetCustomerCouponsByCategory">

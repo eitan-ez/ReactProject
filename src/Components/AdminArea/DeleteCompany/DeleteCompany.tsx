@@ -22,9 +22,7 @@ function DeleteCompany(): JSX.Element {
 
   async function send(company: CompanyModel) {
     try {
-      const response = await jwtAxios.delete(
-        globals.urls.adminDelete + "company/" + company.id
-      );
+      await jwtAxios.delete(globals.urls.adminDelete + "company/" + company.id);
       notify.success("company with id: " + company.id + " has been deleted.");
     } catch (err) {
       notify.error(err);
@@ -34,7 +32,7 @@ function DeleteCompany(): JSX.Element {
   return (
     <ThemeProvider theme={darkTheme}>
       <form className="DeleteCompany Box" onSubmit={handleSubmit(send)}>
-        <Typography align="center" variant="h2" >
+        <Typography align="center" variant="h2">
           Delete a Company
         </Typography>
 
