@@ -1,0 +1,11 @@
+.AboutMe {
+    padding-left: 33%;
+    padding-right: 33%;
+    font-size: large;
+    line-height: 1.5;
+}
+
+.AboutMe > p {
+    text-align: justify;
+
+}

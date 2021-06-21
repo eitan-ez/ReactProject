@@ -30,7 +30,7 @@ class AuthMenu extends Component<{}, AuthMenuState> {
                 <div className="AuthMenu">
                     {
                         this.state.user && <>
-                            <span>Welcome! </span>
+                            <span>Welcome {this.state.user.email}!</span>
                             <span> | </span>
                             <NavLink to="/logout">Logout</NavLink>
                         </>

@@ -21,13 +21,12 @@ function AddCompany(): JSX.Element {
 
   async function send(company: CompanyModel) {
     try {
-      const response = await jwtAxios.post<CompanyModel>(
+      await jwtAxios.post<CompanyModel>(
         globals.urls.adminAdd + "company",
         company
       );
-      const addedCompany = response.data;
 
-      notify.success("company has been added. id: " + addedCompany.id);
+      notify.success("company has been added successfully");
     } catch (err) {
       notify.error(err);
     }
@@ -36,7 +35,7 @@ function AddCompany(): JSX.Element {
   return (
     <form className="Box" onSubmit={handleSubmit(send)}>
       <ThemeProvider theme={darkTheme}>
-        <Typography align="center" variant="h2" >
+        <Typography align="center" variant="h2">
           Add a Company
         </Typography>
 

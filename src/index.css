@@ -7,8 +7,7 @@ body,
   text-align: center;
   color: #ffffff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  background-image: url(https://freesvg.org/img/G68b-1.png);
+  background-image: url(Assets/Images/Background.svg);
   background-size: cover;
 }
 
@@ -23,4 +22,11 @@ body,
 
 .ErrorMessage {
   color: red;
+}
+
+a {
+  color: rgb(0, 255, 234) !important;
+}
+a:hover {
+   color: #00F !important;
 }
